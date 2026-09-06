@@ -1,0 +1,93 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-Pagination {
+  display: flex;
+  font-family: var(--typography-fontFamily-sans, sans-serif);
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-scale-1-rem, 0.25rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: inline-flex;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid var(--color-border-subtle, #ccc);
+    border-radius: var(--border-radius-md, 4px);
+    background-color: var(--color-background-base, #fff);
+    color: var(--color-text-primary, #333);
+    font-size: var(--typography-scale-md-rem, 0.875rem);
+    cursor: pointer;
+    transition: all var(--motion-duration-moderate, 200ms);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-background-muted, #f5f5f5);
+      border-color: var(--color-border-default, #999);
+    }
+
+    &:focus-visible {
+      @include m.focus-ring;
+      outline: 2px solid var(--color-interactive-primary, #007bff);
+      outline-offset: 1px;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: var(--color-background-muted, #f5f5f5);
+    }
+
+    &--active {
+      background-color: var(--color-interactive-primary, #007bff);
+      color: #fff;
+      border-color: var(--color-interactive-primary, #007bff);
+      font-weight: bold;
+
+      &:hover:not(:disabled) {
+        background-color: var(--color-interactive-primary-hover, #0056b3);
+        border-color: var(--color-interactive-primary-hover, #0056b3);
+      }
+    }
+  }
+
+  &__ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    color: var(--color-text-secondary, #666);
+  }
+
+  &--sm {
+    .ds-Pagination__button, .ds-Pagination__ellipsis {
+      min-width: 1.5rem;
+      height: 1.5rem;
+      padding: 0 0.25rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  &--lg {
+    .ds-Pagination__button, .ds-Pagination__ellipsis {
+      min-width: 2.5rem;
+      height: 2.5rem;
+      padding: 0 0.75rem;
+      font-size: 1rem;
+    }
+  }
+}

@@ -1,0 +1,113 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-Input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-scale-1-rem, 0.25rem);
+  font-family: var(--typography-fontFamily-sans);
+  width: 100%;
+}
+
+.ds-Input__label {
+  font-weight: 500;
+  color: var(--color-text-primary, #333);
+}
+
+.ds-Input__required {
+  color: var(--color-interactive-danger, #dc3545);
+  margin-left: 0.25rem;
+}
+
+.ds-Input__container {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border-default, #ccc);
+  border-radius: var(--border-radius-md, 4px);
+  background: var(--color-background-base, #fff);
+  transition: border-color var(--motion-duration-moderate, 200ms);
+  
+  &:focus-within {
+    border-color: var(--color-interactive-primary, #007bff);
+    box-shadow: 0 0 0 2px var(--color-interactive-primary-alpha, rgba(0,123,255,0.25));
+  }
+
+  &--error {
+    border-color: var(--color-interactive-danger, #dc3545);
+    &:focus-within {
+      border-color: var(--color-interactive-danger, #dc3545);
+      box-shadow: 0 0 0 2px rgba(220,53,69,0.25);
+    }
+  }
+
+  &--disabled {
+    background: var(--color-background-disabled, #f5f5f5);
+    cursor: not-allowed;
+  }
+}
+
+.ds-Input__field {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--color-text-primary, #333);
+  width: 100%;
+  
+  &:disabled {
+    cursor: not-allowed;
+    color: var(--color-text-disabled, #888);
+  }
+}
+
+.ds-Input__prefix,
+.ds-Input__suffix {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary, #666);
+}
+
+.ds-Input__prefix {
+  padding-left: var(--spacing-scale-2-rem, 0.5rem);
+}
+
+.ds-Input__suffix {
+  padding-right: var(--spacing-scale-2-rem, 0.5rem);
+}
+
+/* Sizes */
+.ds-Input-wrapper--sm .ds-Input__label {
+  font-size: var(--typography-scale-sm-rem, 0.875rem);
+}
+.ds-Input-wrapper--sm .ds-Input__field {
+  padding: var(--spacing-scale-1-rem, 0.25rem) var(--spacing-scale-2-rem, 0.5rem);
+  font-size: var(--typography-scale-sm-rem, 0.875rem);
+}
+
+.ds-Input-wrapper--md .ds-Input__label {
+  font-size: var(--typography-scale-md-rem, 1rem);
+}
+.ds-Input-wrapper--md .ds-Input__field {
+  padding: var(--spacing-scale-2-rem, 0.5rem) var(--spacing-scale-3-rem, 0.75rem);
+  font-size: var(--typography-scale-md-rem, 1rem);
+}
+
+.ds-Input-wrapper--lg .ds-Input__label {
+  font-size: var(--typography-scale-lg-rem, 1.125rem);
+}
+.ds-Input-wrapper--lg .ds-Input__field {
+  padding: var(--spacing-scale-3-rem, 0.75rem) var(--spacing-scale-4-rem, 1rem);
+  font-size: var(--typography-scale-lg-rem, 1.125rem);
+}
+
+.ds-Input__error {
+  color: var(--color-interactive-danger, #dc3545);
+  font-size: var(--typography-scale-sm-rem, 0.875rem);
+  margin-top: var(--spacing-scale-1-rem, 0.25rem);
+}
+
+.ds-Input__hint {
+  color: var(--color-text-secondary, #666);
+  font-size: var(--typography-scale-sm-rem, 0.875rem);
+  margin-top: var(--spacing-scale-1-rem, 0.25rem);
+}

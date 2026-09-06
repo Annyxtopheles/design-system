@@ -1,0 +1,89 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-Accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &--variant-bordered {
+    border: 1px solid var(--color-border-subtle, #e2e8f0);
+    border-radius: var(--border-radius-md, 8px);
+    .ds-AccordionItem {
+      border-bottom: 1px solid var(--color-border-subtle, #e2e8f0);
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &--variant-default {
+    .ds-AccordionItem {
+      border-bottom: 1px solid var(--color-border-subtle, #e2e8f0);
+    }
+  }
+
+  &--variant-ghost {
+    .ds-AccordionItem {
+      border-bottom: none;
+    }
+  }
+}
+
+.ds-AccordionItem {
+  &__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-scale-4-rem, 1rem);
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    color: var(--color-text-primary, #1a202c);
+    font-weight: 500;
+    transition: background-color var(--motion-duration-fast, 150ms) var(--motion-easing-standard, ease);
+    
+    &:hover:not(:disabled) {
+      background-color: var(--color-background-neutral-hover, #edf2f7);
+    }
+    
+    &:focus-visible {
+      outline: 2px solid var(--color-interactive-primary, #3182ce);
+      outline-offset: -2px;
+    }
+  }
+
+  &.is-disabled &__header {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &__icon {
+    margin-right: var(--spacing-scale-3-rem, 0.75rem);
+    display: inline-flex;
+  }
+
+  &__title {
+    flex-grow: 1;
+  }
+
+  &__chevron {
+    display: inline-flex;
+    transition: transform var(--motion-duration-moderate, 200ms) var(--motion-easing-standard, ease);
+  }
+
+  &.is-open &__chevron {
+    transform: rotate(180deg);
+  }
+
+  &__content-wrapper {
+    overflow: hidden;
+    transition: height var(--motion-duration-moderate, 200ms) var(--motion-easing-standard, ease);
+  }
+
+  &__content {
+    padding: 0 var(--spacing-scale-4-rem, 1rem) var(--spacing-scale-4-rem, 1rem);
+    color: var(--color-text-secondary, #4a5568);
+  }
+}

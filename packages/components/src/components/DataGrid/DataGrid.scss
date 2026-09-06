@@ -1,0 +1,205 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-DataGrid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--color-border, #ccc);
+  border-radius: var(--border-radius-md, 4px);
+  overflow: hidden;
+  background-color: var(--color-background-base, #fff);
+  font-family: var(--typography-fontFamily-sans, sans-serif);
+
+  &--sticky {
+    .ds-DataGrid__table-container {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background-color: var(--color-background-base, #fff);
+    }
+  }
+
+  &--dense {
+    .ds-DataGrid__td, .ds-DataGrid__th {
+      padding: var(--spacing-scale-1-rem, 0.25rem) var(--spacing-scale-2-rem, 0.5rem);
+    }
+  }
+}
+
+.ds-DataGrid__table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ds-DataGrid__table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+
+  &--striped {
+    tbody tr:nth-child(even) {
+      background-color: var(--color-background-alt, #f9f9f9);
+    }
+  }
+}
+
+.ds-DataGrid__th {
+  padding: var(--spacing-scale-2-rem, 0.5rem) var(--spacing-scale-3-rem, 0.75rem);
+  border-bottom: 1px solid var(--color-border, #ccc);
+  font-weight: 600;
+  color: var(--color-text-primary, #333);
+  background-color: var(--color-background-base, #fff);
+
+  &--sortable {
+    cursor: pointer;
+    user-select: none;
+    
+    &:hover {
+      background-color: var(--color-background-alt, #f0f0f0);
+    }
+  }
+  
+  &--checkbox {
+    width: 40px;
+    text-align: center;
+  }
+}
+
+.ds-DataGrid__th-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-scale-1-rem, 0.25rem);
+}
+
+.ds-DataGrid__sort-icon {
+  font-size: 0.8em;
+  color: var(--color-text-secondary, #666);
+}
+
+.ds-DataGrid__filter-row {
+  background-color: var(--color-background-alt, #f9f9f9);
+  
+  .ds-DataGrid__th {
+    padding: var(--spacing-scale-1-rem, 0.25rem) var(--spacing-scale-2-rem, 0.5rem);
+    border-bottom: 2px solid var(--color-border, #ccc);
+  }
+}
+
+.ds-DataGrid__filter-input {
+  width: 100%;
+  padding: var(--spacing-scale-1-rem, 0.25rem);
+  border: 1px solid var(--color-border, #ccc);
+  border-radius: var(--border-radius-sm, 2px);
+  box-sizing: border-box;
+}
+
+.ds-DataGrid__row {
+  border-bottom: 1px solid var(--color-border, #eee);
+  transition: background-color var(--motion-duration-moderate, 200ms) var(--motion-easing-standard, ease);
+
+  &:hover {
+    background-color: var(--color-background-hover, #f5f5f5);
+  }
+
+  &--selected {
+    background-color: var(--color-interactive-selected, #e6f7ff) !important;
+  }
+  
+  &--empty {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.ds-DataGrid__td {
+  padding: var(--spacing-scale-2-rem, 0.5rem) var(--spacing-scale-3-rem, 0.75rem);
+  color: var(--color-text-primary, #333);
+  
+  &--checkbox {
+    text-align: center;
+  }
+}
+
+.ds-DataGrid__empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-scale-8-rem, 2rem);
+  color: var(--color-text-secondary, #666);
+}
+
+.ds-DataGrid__empty-icon {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-scale-2-rem, 0.5rem);
+}
+
+.ds-DataGrid__skeleton-text {
+  height: 20px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: var(--border-radius-sm, 2px);
+  width: 100%;
+}
+
+.ds-DataGrid__skeleton-box {
+  height: 16px;
+  width: 16px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.ds-DataGrid__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-scale-2-rem, 0.5rem) var(--spacing-scale-3-rem, 0.75rem);
+  border-top: 1px solid var(--color-border, #ccc);
+  background-color: var(--color-background-base, #fff);
+}
+
+.ds-DataGrid__pagination-info {
+  font-size: var(--typography-scale-sm-rem, 0.875rem);
+  color: var(--color-text-secondary, #666);
+}
+
+.ds-DataGrid__pagination-controls {
+  display: flex;
+  gap: var(--spacing-scale-1-rem, 0.25rem);
+  
+  button {
+    padding: var(--spacing-scale-1-rem, 0.25rem) var(--spacing-scale-2-rem, 0.5rem);
+    border: 1px solid var(--color-border, #ccc);
+    background: var(--color-background-base, #fff);
+    border-radius: var(--border-radius-sm, 2px);
+    cursor: pointer;
+    font-size: var(--typography-scale-sm-rem, 0.875rem);
+    
+    &:hover:not(:disabled) {
+      background: var(--color-background-hover, #f0f0f0);
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

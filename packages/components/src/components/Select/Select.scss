@@ -1,0 +1,93 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-Select-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-scale-1-rem, 0.25rem);
+  font-family: var(--typography-fontFamily-sans);
+  width: 100%;
+}
+
+.ds-Select__label {
+  font-weight: 500;
+  color: var(--color-text-primary, #333);
+  font-size: var(--typography-scale-md-rem, 1rem);
+}
+
+.ds-Select__required {
+  color: var(--color-interactive-danger, #dc3545);
+  margin-left: 0.25rem;
+}
+
+.ds-Select__container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid var(--color-border-default, #ccc);
+  border-radius: var(--border-radius-md, 4px);
+  background: var(--color-background-base, #fff);
+  transition: border-color var(--motion-duration-moderate, 200ms);
+  
+  &:focus-within {
+    border-color: var(--color-interactive-primary, #007bff);
+    box-shadow: 0 0 0 2px var(--color-interactive-primary-alpha, rgba(0,123,255,0.25));
+  }
+
+  &--error {
+    border-color: var(--color-interactive-danger, #dc3545);
+    &:focus-within {
+      border-color: var(--color-interactive-danger, #dc3545);
+      box-shadow: 0 0 0 2px rgba(220,53,69,0.25);
+    }
+  }
+
+  &--disabled {
+    background: var(--color-background-disabled, #f5f5f5);
+    cursor: not-allowed;
+  }
+}
+
+.ds-Select__field {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--color-text-primary, #333);
+  width: 100%;
+  padding: var(--spacing-scale-2-rem, 0.5rem) var(--spacing-scale-3-rem, 0.75rem);
+  font-family: inherit;
+  font-size: var(--typography-scale-md-rem, 1rem);
+  appearance: none;
+  
+  &:disabled {
+    cursor: not-allowed;
+    color: var(--color-text-disabled, #888);
+  }
+
+  &[multiple] {
+    padding-right: var(--spacing-scale-2-rem, 0.5rem);
+    min-height: 100px;
+  }
+}
+
+.ds-Select__icon {
+  position: absolute;
+  right: var(--spacing-scale-2-rem, 0.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-secondary, #666);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.ds-Select__error {
+  color: var(--color-interactive-danger, #dc3545);
+  font-size: var(--typography-scale-sm-rem, 0.875rem);
+}
+
+.ds-Select__hint {
+  color: var(--color-text-secondary, #666);
+  font-size: var(--typography-scale-sm-rem, 0.875rem);
+}

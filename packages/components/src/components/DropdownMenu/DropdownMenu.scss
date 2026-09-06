@@ -1,0 +1,103 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-DropdownMenu {
+  position: relative;
+  display: inline-block;
+
+  &__trigger {
+    display: inline-flex;
+    cursor: pointer;
+    
+    &:focus-visible {
+      @include m.focus-ring;
+      outline: 2px solid var(--color-interactive-primary, #007bff);
+      border-radius: var(--border-radius-md, 4px);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    z-index: 1000;
+    min-width: 200px;
+    background: var(--color-background-base, #fff);
+    border: 1px solid var(--color-border-subtle, #ccc);
+    border-radius: var(--border-radius-md, 4px);
+    box-shadow: var(--elevation-light-4-boxShadow, 0 4px 6px rgba(0,0,0,0.1));
+    padding: var(--spacing-scale-1-rem, 0.25rem) 0;
+    font-family: var(--typography-fontFamily-sans, sans-serif);
+    outline: none;
+
+    &--bottom-start {
+      top: 100%;
+      left: 0;
+      margin-top: 4px;
+    }
+
+    &--bottom-end {
+      top: 100%;
+      right: 0;
+      margin-top: 4px;
+    }
+
+    &--top-start {
+      bottom: 100%;
+      left: 0;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-scale-2-rem, 0.5rem) var(--spacing-scale-3-rem, 0.75rem);
+    font-size: var(--typography-scale-md-rem, 0.875rem);
+    color: var(--color-text-primary, #333);
+    cursor: pointer;
+    user-select: none;
+
+    &--focused {
+      background-color: var(--color-background-muted, #f5f5f5);
+    }
+
+    &--disabled {
+      color: var(--color-text-disabled, #999);
+      cursor: not-allowed;
+      
+      &.ds-DropdownMenu__item--focused {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &__separator {
+    height: 1px;
+    background-color: var(--color-border-subtle, #ccc);
+    margin: var(--spacing-scale-1-rem, 0.25rem) 0;
+  }
+
+  &__icon {
+    display: inline-flex;
+    margin-right: var(--spacing-scale-2-rem, 0.5rem);
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__label {
+    flex: 1;
+  }
+
+  &__shortcut {
+    margin-left: var(--spacing-scale-4-rem, 1rem);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary, #666);
+  }
+  
+  &__submenu-indicator {
+    margin-left: var(--spacing-scale-2-rem, 0.5rem);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary, #666);
+  }
+}

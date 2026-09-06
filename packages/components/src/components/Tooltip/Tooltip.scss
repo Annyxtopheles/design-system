@@ -1,0 +1,91 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-Tooltip__wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.ds-Tooltip {
+  position: absolute;
+  z-index: 1000;
+  padding: var(--spacing-scale-2-rem, 0.5rem) var(--spacing-scale-3-rem, 0.75rem);
+  font-family: var(--typography-fontFamily-sans, sans-serif);
+  font-size: var(--typography-scale-sm-rem, 0.875rem);
+  color: var(--color-background-base, #ffffff);
+  background-color: var(--color-text-primary, #1a202c);
+  border-radius: var(--border-radius-sm, 4px);
+  pointer-events: none;
+  white-space: normal;
+  word-wrap: break-word;
+  animation: ds-tooltip-fade-in var(--motion-duration-fast, 150ms) var(--motion-easing-standard, ease);
+
+  &--placement-top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: var(--color-text-primary, #1a202c) transparent transparent transparent;
+    }
+  }
+
+  &--placement-bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent var(--color-text-primary, #1a202c) transparent;
+    }
+  }
+
+  &--placement-left {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-8px);
+    &::after {
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent transparent var(--color-text-primary, #1a202c);
+    }
+  }
+
+  &--placement-right {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    &::after {
+      content: '';
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent var(--color-text-primary, #1a202c) transparent transparent;
+    }
+  }
+}
+
+@keyframes ds-tooltip-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

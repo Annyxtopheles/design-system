@@ -1,0 +1,114 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-Popover {
+  position: relative;
+  display: inline-block;
+
+  &__trigger {
+    display: inline-flex;
+    cursor: pointer;
+    
+    &:focus-visible {
+      @include m.focus-ring;
+      outline: 2px solid var(--color-interactive-primary, #007bff);
+      border-radius: var(--border-radius-md, 4px);
+    }
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 1000;
+    min-width: 250px;
+    background: var(--color-background-base, #fff);
+    border: 1px solid var(--color-border-subtle, #ccc);
+    border-radius: var(--border-radius-md, 4px);
+    box-shadow: var(--elevation-light-4-boxShadow, 0 4px 6px rgba(0,0,0,0.1));
+    font-family: var(--typography-fontFamily-sans, sans-serif);
+    outline: none;
+
+    // Positioning
+    &--bottom {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 8px;
+    }
+    
+    &--bottom-start {
+      top: 100%;
+      left: 0;
+      margin-top: 8px;
+    }
+
+    &--top {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 8px;
+    }
+    
+    &--top-start {
+      bottom: 100%;
+      left: 0;
+      margin-bottom: 8px;
+    }
+
+    &--left {
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      margin-right: 8px;
+    }
+
+    &--right {
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      margin-left: 8px;
+    }
+  }
+  
+  &__arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    
+    &--bottom, &--bottom-start {
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 0 6px 6px 6px;
+      border-color: transparent transparent var(--color-background-base, #fff) transparent;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -6px;
+        border-width: 0 6px 6px 6px;
+        border-style: solid;
+        border-color: transparent transparent var(--color-border-subtle, #ccc) transparent;
+        z-index: -1;
+      }
+    }
+    
+    &--bottom-start {
+      left: 1rem;
+      transform: none;
+    }
+  }
+
+  &__header {
+    padding: var(--spacing-scale-3-rem, 0.75rem) var(--spacing-scale-4-rem, 1rem);
+    border-bottom: 1px solid var(--color-border-subtle, #ccc);
+    font-weight: 600;
+    color: var(--color-text-primary, #111);
+  }
+
+  &__body {
+    padding: var(--spacing-scale-4-rem, 1rem);
+    color: var(--color-text-primary, #333);
+  }
+}

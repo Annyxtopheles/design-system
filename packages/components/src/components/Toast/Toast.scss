@@ -1,0 +1,80 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-ToastContainer {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-scale-3-rem, 0.75rem);
+  padding: var(--spacing-scale-4-rem, 1rem);
+  pointer-events: none;
+
+  &--top-right { top: 0; right: 0; align-items: flex-end; }
+  &--top-center { top: 0; left: 50%; transform: translateX(-50%); align-items: center; }
+  &--bottom-right { bottom: 0; right: 0; align-items: flex-end; flex-direction: column-reverse; }
+  &--bottom-center { bottom: 0; left: 50%; transform: translateX(-50%); align-items: center; flex-direction: column-reverse; }
+}
+
+.ds-Toast {
+  display: flex;
+  align-items: flex-start;
+  min-width: 300px;
+  max-width: 400px;
+  padding: var(--spacing-scale-3-rem, 0.75rem) var(--spacing-scale-4-rem, 1rem);
+  background: var(--color-background-base, #ffffff);
+  border-radius: var(--border-radius-md, 8px);
+  box-shadow: var(--elevation-light-3-boxShadow, 0 10px 15px rgba(0,0,0,0.1));
+  pointer-events: auto;
+  animation: ds-toast-slide-in var(--motion-duration-moderate, 200ms) var(--motion-easing-standard, ease);
+  border-left: 4px solid transparent;
+
+  &--default { border-left-color: var(--color-neutral, #a0aec0); color: var(--color-text-primary, #1a202c); }
+  &--success { border-left-color: var(--color-success, #48bb78); }
+  &--error { border-left-color: var(--color-error, #f56565); }
+  &--warning { border-left-color: var(--color-warning, #ecc94b); }
+  &--info { border-left-color: var(--color-info, #4299e1); }
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-size: var(--typography-scale-sm-rem, 0.875rem);
+  }
+
+  &__message {
+    font-size: var(--typography-scale-sm-rem, 0.875rem);
+  }
+
+  &__action {
+    margin-left: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--color-interactive-primary, #3182ce);
+    font-weight: 600;
+    cursor: pointer;
+    &:focus-visible { outline: 2px solid currentColor; }
+  }
+
+  &__close {
+    margin-left: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.5;
+    &:hover { opacity: 1; }
+    &:focus-visible { outline: 2px solid var(--color-interactive-primary, #3182ce); }
+  }
+}
+
+@keyframes ds-toast-slide-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

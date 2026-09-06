@@ -1,0 +1,106 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-Badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--typography-fontFamily-sans);
+  border-radius: var(--border-radius-full, 9999px);
+  white-space: nowrap;
+  font-weight: 500;
+  gap: var(--spacing-scale-1-rem, 0.25rem);
+
+  &__icon {
+    display: inline-flex;
+    width: 1em;
+    height: 1em;
+  }
+
+  &__remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-left: var(--spacing-scale-1-rem, 0.25rem);
+    cursor: pointer;
+    color: inherit;
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
+    outline: none;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    &:focus-visible {
+      opacity: 1;
+      box-shadow: 0 0 0 2px var(--color-interactive-primary, #007bff);
+    }
+  }
+
+  /* Sizes */
+  &--sm {
+    padding: 0 var(--spacing-scale-1-rem, 0.25rem);
+    font-size: var(--typography-scale-xs-rem, 0.75rem);
+    height: 1.25rem;
+  }
+  
+  &--md {
+    padding: 0 var(--spacing-scale-2-rem, 0.5rem);
+    font-size: var(--typography-scale-sm-rem, 0.875rem);
+    height: 1.5rem;
+  }
+  
+  &--lg {
+    padding: 0 var(--spacing-scale-3-rem, 0.75rem);
+    font-size: var(--typography-scale-md-rem, 1rem);
+    height: 1.75rem;
+  }
+
+  /* Dot Mode */
+  &--dot {
+    padding: 0;
+    border-radius: 50%;
+    
+    &.ds-Badge--sm { width: 0.5rem; height: 0.5rem; }
+    &.ds-Badge--md { width: 0.75rem; height: 0.75rem; }
+    &.ds-Badge--lg { width: 1rem; height: 1rem; }
+  }
+
+  /* Variants */
+  &--default {
+    background-color: var(--color-background-muted, #e0e0e0);
+    color: var(--color-text-primary, #333);
+  }
+  
+  &--primary {
+    background-color: var(--color-interactive-primary-alpha, rgba(0,123,255,0.1));
+    color: var(--color-interactive-primary, #007bff);
+  }
+  
+  &--success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+  }
+  
+  &--warning {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #856404;
+  }
+  
+  &--error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+  }
+  
+  &--info {
+    background-color: rgba(23, 162, 184, 0.1);
+    color: #17a2b8;
+  }
+}

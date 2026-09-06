@@ -1,0 +1,201 @@
+/// <reference types="react" />
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Design Token SCSS Variables
+// Maps CSS custom properties from @design-system/tokens to SCSS variables.
+// Import this partial at the top of every component SCSS file.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Typography ────────────────────────────────────────────────────────────────
+$font-sans:     var(--typography-fontFamily-sans);
+$font-serif:    var(--typography-fontFamily-serif);
+$font-mono:     var(--typography-fontFamily-mono);
+$font-display:  var(--typography-fontFamily-display);
+
+$font-thin:        100;
+$font-light:       300;
+$font-regular:     400;
+$font-medium:      500;
+$font-semibold:    600;
+$font-bold:        700;
+$font-extrabold:   800;
+$font-black:       900;
+
+$text-2xs:    var(--typography-scale-2xs-rem);
+$text-xs:     var(--typography-scale-xs-rem);
+$text-sm:     var(--typography-scale-sm-rem);
+$text-base:   var(--typography-scale-base-rem);
+$text-md:     var(--typography-scale-md-rem);
+$text-md-plus:var(--typography-scale-md-plus-rem);
+$text-lg:     var(--typography-scale-lg-rem);
+$text-xl:     var(--typography-scale-xl-rem);
+$text-2xl:    var(--typography-scale-2xl-rem);
+$text-3xl:    var(--typography-scale-3xl-rem);
+$text-4xl:    var(--typography-scale-4xl-rem);
+$text-5xl:    var(--typography-scale-5xl-rem);
+
+$leading-tight:   var(--typography-lineHeight-tight);
+$leading-snug:    var(--typography-lineHeight-snug);
+$leading-normal:  var(--typography-lineHeight-normal);
+$leading-relaxed: var(--typography-lineHeight-relaxed);
+
+$tracking-tight:  var(--typography-letterSpacing-tight);
+$tracking-normal: var(--typography-letterSpacing-normal);
+$tracking-wide:   var(--typography-letterSpacing-wide);
+$tracking-wider:  var(--typography-letterSpacing-wider);
+$tracking-widest: var(--typography-letterSpacing-widest);
+
+// ── Spacing ───────────────────────────────────────────────────────────────────
+$space-0:    0;
+$space-px:   1px;
+$space-0-5:  var(--spacing-scale-0-5-rem);
+$space-1:    var(--spacing-scale-1-rem);
+$space-1-5:  var(--spacing-scale-1-5-rem);
+$space-2:    var(--spacing-scale-2-rem);
+$space-2-5:  var(--spacing-scale-2-5-rem);
+$space-3:    var(--spacing-scale-3-rem);
+$space-3-5:  var(--spacing-scale-3-5-rem);
+$space-4:    var(--spacing-scale-4-rem);
+$space-5:    var(--spacing-scale-5-rem);
+$space-6:    var(--spacing-scale-6-rem);
+$space-7:    var(--spacing-scale-7-rem);
+$space-8:    var(--spacing-scale-8-rem);
+$space-10:   var(--spacing-scale-10-rem);
+$space-12:   var(--spacing-scale-12-rem);
+$space-14:   var(--spacing-scale-14-rem);
+$space-16:   var(--spacing-scale-16-rem);
+$space-20:   var(--spacing-scale-20-rem);
+$space-24:   var(--spacing-scale-24-rem);
+
+// ── Border Radii ──────────────────────────────────────────────────────────────
+$radius-none:  var(--border-radius-none);
+$radius-xs:    var(--border-radius-xs);
+$radius-sm:    var(--border-radius-sm);
+$radius-md:    var(--border-radius-md);
+$radius-lg:    var(--border-radius-lg);
+$radius-xl:    var(--border-radius-xl);
+$radius-2xl:   var(--border-radius-2xl);
+$radius-3xl:   var(--border-radius-3xl);
+$radius-full:  var(--border-radius-full);
+
+// ── Border Widths ─────────────────────────────────────────────────────────────
+$border-hairline: var(--border-width-hairline);
+$border-thin:     var(--border-width-thin);
+$border-base:     var(--border-width-base);
+$border-medium:   var(--border-width-medium);
+$border-thick:    var(--border-width-thick);
+
+// ── Motion ────────────────────────────────────────────────────────────────────
+$duration-faster:  var(--motion-duration-faster);
+$duration-fast:    var(--motion-duration-fast);
+$duration-normal:  var(--motion-duration-normal);
+$duration-moderate:var(--motion-duration-moderate);
+$duration-slow:    var(--motion-duration-slow);
+$duration-slower:  var(--motion-duration-slower);
+
+$ease-standard:  var(--motion-easing-standard);
+$ease-decel:     var(--motion-easing-standardDecel);
+$ease-accel:     var(--motion-easing-standardAccel);
+$ease-spring:    var(--motion-easing-spring);
+$ease-bounce:    var(--motion-easing-bounce);
+$ease-out:       var(--motion-easing-easeOut);
+$ease-in:        var(--motion-easing-easeIn);
+$ease-in-out:    var(--motion-easing-easeInOut);
+
+// ── Elevation ─────────────────────────────────────────────────────────────────
+$shadow-0:  none;
+$shadow-1:  var(--elevation-light-1-boxShadow);
+$shadow-2:  var(--elevation-light-2-boxShadow);
+$shadow-3:  var(--elevation-light-3-boxShadow);
+$shadow-4:  var(--elevation-light-4-boxShadow);
+$shadow-5:  var(--elevation-light-5-boxShadow);
+$shadow-6:  var(--elevation-light-6-boxShadow);
+$shadow-7:  var(--elevation-light-7-boxShadow);
+$shadow-8:  var(--elevation-light-8-boxShadow);
+$shadow-10: var(--elevation-light-10-boxShadow);
+$shadow-11: var(--elevation-light-11-boxShadow);
+
+// ── Semantic Colors (theme-agnostic, driven by CSS vars) ──────────────────────
+// Backgrounds
+$bg-base:        var(--color-background-base);
+$bg-subtle:      var(--color-background-subtle);
+$bg-muted:       var(--color-background-muted);
+$bg-emphasized:  var(--color-background-emphasized);
+$bg-inverse:     var(--color-background-inverse);
+$bg-brand:       var(--color-background-brand);
+$bg-brand-subtle:var(--color-background-brandSubtle);
+$bg-success:     var(--color-background-success);
+$bg-warning:     var(--color-background-warning);
+$bg-error:       var(--color-background-error);
+$bg-info:        var(--color-background-info);
+$bg-overlay:     var(--color-background-overlay);
+$bg-scrim:       var(--color-background-scrim);
+
+// Surfaces
+$surface-raised:   var(--color-surface-raised);
+$surface-overlay:  var(--color-surface-overlay);
+$surface-sunken:   var(--color-surface-sunken);
+$surface-card:     var(--color-surface-card);
+$surface-toast:    var(--color-surface-toast);
+$surface-tooltip:  var(--color-surface-tooltip);
+$surface-sidebar:  var(--color-surface-sidebar);
+$surface-header:   var(--color-surface-header);
+
+// Text
+$text-primary:    var(--color-text-primary);
+$text-secondary:  var(--color-text-secondary);
+$text-tertiary:   var(--color-text-tertiary);
+$text-disabled:   var(--color-text-disabled);
+$text-inverse:    var(--color-text-inverse);
+$text-brand:      var(--color-text-brand);
+$text-on-brand:   var(--color-text-onBrand);
+$text-success:    var(--color-text-success);
+$text-warning:    var(--color-text-warning);
+$text-error:      var(--color-text-error);
+$text-info:       var(--color-text-info);
+$text-link:       var(--color-text-link);
+$text-link-hover: var(--color-text-linkHover);
+$text-code:       var(--color-text-code);
+
+// Borders
+$border-subtle:   var(--color-border-subtle);
+$border-default:  var(--color-border-default);
+$border-strong:   var(--color-border-strong);
+$border-focus:    var(--color-border-focus);
+$border-brand:    var(--color-border-brand);
+$border-error:    var(--color-border-error);
+$border-success:  var(--color-border-success);
+$border-warning:  var(--color-border-warning);
+$border-inverse:  var(--color-border-inverse);
+
+// Interactive
+$interactive-primary:          var(--color-interactive-primary);
+$interactive-primary-hover:    var(--color-interactive-primaryHover);
+$interactive-primary-active:   var(--color-interactive-primaryActive);
+$interactive-primary-subtle:   var(--color-interactive-primarySubtle);
+$interactive-secondary:        var(--color-interactive-secondary);
+$interactive-secondary-hover:  var(--color-interactive-secondaryHover);
+$interactive-danger:           var(--color-interactive-danger);
+$interactive-danger-hover:     var(--color-interactive-dangerHover);
+$interactive-ghost-hover:      var(--color-interactive-ghostHover);
+$interactive-selected:         var(--color-interactive-selected);
+$interactive-selected-text:    var(--color-interactive-selectedText);
+$interactive-disabled:         var(--color-interactive-disabled);
+$interactive-disabled-text:    var(--color-interactive-disabledText);
+
+// Feedback
+$feedback-success:       var(--color-feedback-success);
+$feedback-success-muted: var(--color-feedback-successMuted);
+$feedback-warning:       var(--color-feedback-warning);
+$feedback-warning-muted: var(--color-feedback-warningMuted);
+$feedback-error:         var(--color-feedback-error);
+$feedback-error-muted:   var(--color-feedback-errorMuted);
+$feedback-info:          var(--color-feedback-info);
+$feedback-info-muted:    var(--color-feedback-infoMuted);
+
+// ── Layout ────────────────────────────────────────────────────────────────────
+$breakpoint-sm:  640px;
+$breakpoint-md:  768px;
+$breakpoint-lg:  1024px;
+$breakpoint-xl:  1280px;
+$breakpoint-2xl: 1536px;

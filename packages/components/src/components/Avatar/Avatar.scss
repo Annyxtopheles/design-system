@@ -1,0 +1,103 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-Avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  vertical-align: middle;
+
+  &--size-xs {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: var(--typography-scale-xs-rem, 0.75rem);
+  }
+  &--size-sm {
+    width: 2rem;
+    height: 2rem;
+    font-size: var(--typography-scale-sm-rem, 0.875rem);
+  }
+  &--size-md {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: var(--typography-scale-md-rem, 1rem);
+  }
+  &--size-lg {
+    width: 3rem;
+    height: 3rem;
+    font-size: var(--typography-scale-lg-rem, 1.125rem);
+  }
+  &--size-xl {
+    width: 4rem;
+    height: 4rem;
+    font-size: var(--typography-scale-xl-rem, 1.25rem);
+  }
+  &--size-2xl {
+    width: 6rem;
+    height: 6rem;
+    font-size: var(--typography-scale-2xl-rem, 1.5rem);
+  }
+
+  &--shape-circle {
+    border-radius: var(--border-radius-full, 9999px);
+    .ds-Avatar__content, .ds-Avatar__image, .ds-Avatar__initials {
+      border-radius: var(--border-radius-full, 9999px);
+    }
+  }
+
+  &--shape-square {
+    border-radius: var(--border-radius-md, 6px);
+    .ds-Avatar__content, .ds-Avatar__image, .ds-Avatar__initials {
+      border-radius: var(--border-radius-md, 6px);
+    }
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--color-background-neutral, #e2e8f0);
+    color: var(--color-text-primary, #1a202c);
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+  }
+
+  &__status, &__badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(25%, 25%);
+    border: 2px solid var(--color-background-base, #ffffff);
+    border-radius: var(--border-radius-full, 9999px);
+  }
+
+  &__status {
+    width: 25%;
+    height: 25%;
+    min-width: 0.5rem;
+    min-height: 0.5rem;
+
+    &--online { background-color: var(--color-success, #48bb78); }
+    &--offline { background-color: var(--color-neutral, #a0aec0); }
+    &--away { background-color: var(--color-warning, #ecc94b); }
+    &--busy { background-color: var(--color-error, #f56565); }
+  }
+}

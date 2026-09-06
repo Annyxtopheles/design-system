@@ -1,0 +1,39 @@
+@use '../../styles/tokens' as t;
+@use '../../styles/mixins' as m;
+
+.ds-DashboardDial {
+  display: inline-block;
+  font-family: var(--typography-fontFamily-sans, sans-serif);
+  width: 100%;
+  max-width: 300px; /* default max width for responsiveness */
+  
+  &--sm { max-width: 150px; }
+  &--md { max-width: 250px; }
+  &--lg { max-width: 400px; }
+  &--xl { max-width: 600px; }
+}
+
+.ds-DashboardDial__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ds-DashboardDial__arc-fg {
+  transition: stroke 0.3s ease;
+}
+
+.ds-DashboardDial__value {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.ds-DashboardDial__label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.ds-DashboardDial__minmax {
+  font-size: 0.8rem;
+  font-weight: 400;
+}

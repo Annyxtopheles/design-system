@@ -1,0 +1,120 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Shared SCSS Mixins
+// Reusable layout, responsive, and a11y helpers for all components.
+// ─────────────────────────────────────────────────────────────────────────────
+@use 'tokens' as t;
+
+// ── Breakpoint helpers ────────────────────────────────────────────────────────
+@mixin respond-sm  { @media (min-width: 640px)  { @content; } }
+@mixin respond-md  { @media (min-width: 768px)  { @content; } }
+@mixin respond-lg  { @media (min-width: 1024px) { @content; } }
+@mixin respond-xl  { @media (min-width: 1280px) { @content; } }
+@mixin respond-2xl { @media (min-width: 1536px) { @content; } }
+
+// ── Focus ring (WCAG 2.4.7) ───────────────────────────────────────────────────
+@mixin focus-ring($color: t.$border-focus, $offset: 2px) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: $offset;
+    border-radius: inherit;
+  }
+}
+
+// ── Visually hidden (screen-reader only) ──────────────────────────────────────
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ── Flex center ───────────────────────────────────────────────────────────────
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Truncate overflow text ────────────────────────────────────────────────────
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ── Absolute fill ─────────────────────────────────────────────────────────────
+@mixin absolute-fill {
+  position: absolute;
+  inset: 0;
+}
+
+// ── Smooth transition ─────────────────────────────────────────────────────────
+@mixin transition($properties: all, $duration: t.$duration-moderate, $easing: t.$ease-standard) {
+  transition: $properties $duration $easing;
+}
+
+// ── Surface card ──────────────────────────────────────────────────────────────
+@mixin surface-card($shadow: t.$shadow-2) {
+  background: t.$surface-card;
+  border: 1px solid t.$border-default;
+  border-radius: t.$radius-xl;
+  box-shadow: $shadow;
+}
+
+// ── Disabled state ────────────────────────────────────────────────────────────
+@mixin disabled {
+  &:disabled,
+  &[aria-disabled='true'] {
+    background: t.$interactive-disabled;
+    color: t.$interactive-disabled-text;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}
+
+// ── Scrollbar styling ─────────────────────────────────────────────────────────
+@mixin custom-scrollbar($width: 6px) {
+  scrollbar-width: thin;
+  scrollbar-color: t.$border-strong transparent;
+
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: t.$border-strong;
+    border-radius: t.$radius-full;
+    &:hover { background: t.$text-tertiary; }
+  }
+}
+
+// ── Layer z-index scale ───────────────────────────────────────────────────────
+$z-base:      0;
+$z-raised:    10;
+$z-dropdown:  1000;
+$z-sticky:    1100;
+$z-overlay:   1200;
+$z-modal:     1300;
+$z-popover:   1400;
+$z-toast:     1500;
+$z-tooltip:   1600;
