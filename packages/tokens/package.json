@@ -1,0 +1,20 @@
+{
+  "name": "@design-system/tokens",
+  "version": "1.0.0",
+  "description": "Comprehensive design token package — colors, typography, spacing, elevation, motion, borders",
+  "main": "dist/tokens.json",
+  "types": "dist/tokens.d.ts",
+  "scripts": {
+    "build": "ts-node src/generate.ts",
+    "build:watch": "nodemon --exec ts-node src/generate.ts --watch src/tokens",
+    "validate": "node -e \"const t = require('./dist/tokens.json'); const flat = JSON.stringify(t); const unresolved = (flat.match(/\\{[^}]+\\}/g) || []); if(unresolved.length) { console.error('Unresolved aliases:', unresolved); process.exit(1); } else { console.log('All aliases resolved. Token count:', Object.keys(t).length); }\""
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.11.0"
+  },
+  "files": [
+    "dist/"
+  ]
+}

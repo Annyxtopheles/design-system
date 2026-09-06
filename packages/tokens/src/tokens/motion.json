@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "description": "Motion token system — durations, easings, and composite animation presets"
+  },
+
+  "duration": {
+    "instant":    "0ms",
+    "faster":     "75ms",
+    "fast":       "100ms",
+    "normal":     "150ms",
+    "moderate":   "200ms",
+    "slow":       "300ms",
+    "slower":     "450ms",
+    "slowest":    "600ms",
+    "glacial":    "1000ms"
+  },
+
+  "easing": {
+    "linear":          "linear",
+    "standard":        "cubic-bezier(0.2, 0, 0, 1)",
+    "standardAccel":   "cubic-bezier(0.3, 0, 1, 1)",
+    "standardDecel":   "cubic-bezier(0, 0, 0, 1)",
+    "emphasized":      "cubic-bezier(0.2, 0, 0, 1)",
+    "emphasizedAccel": "cubic-bezier(0.3, 0, 0.8, 0.15)",
+    "emphasizedDecel": "cubic-bezier(0.05, 0.7, 0.1, 1)",
+    "spring":          "cubic-bezier(0.34, 1.56, 0.64, 1)",
+    "bounce":          "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+    "elastic":         "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+    "ease":            "ease",
+    "easeIn":          "ease-in",
+    "easeOut":         "ease-out",
+    "easeInOut":       "ease-in-out"
+  },
+
+  "transition": {
+    "fade": {
+      "enter": { "duration": "{duration.moderate}", "easing": "{easing.standardDecel}" },
+      "exit":  { "duration": "{duration.normal}",   "easing": "{easing.standardAccel}" }
+    },
+    "slide": {
+      "enter": { "duration": "{duration.slow}",     "easing": "{easing.emphasizedDecel}" },
+      "exit":  { "duration": "{duration.moderate}", "easing": "{easing.emphasizedAccel}" }
+    },
+    "scale": {
+      "enter": { "duration": "{duration.moderate}", "easing": "{easing.spring}" },
+      "exit":  { "duration": "{duration.normal}",   "easing": "{easing.standardAccel}" }
+    },
+    "expand": {
+      "enter": { "duration": "{duration.slow}",     "easing": "{easing.standardDecel}" },
+      "exit":  { "duration": "{duration.moderate}", "easing": "{easing.standardAccel}" }
+    },
+    "bounce": {
+      "enter": { "duration": "{duration.slower}",   "easing": "{easing.bounce}" },
+      "exit":  { "duration": "{duration.moderate}", "easing": "{easing.easeIn}" }
+    },
+    "pageTransition": {
+      "enter": { "duration": "{duration.slower}",   "easing": "{easing.emphasizedDecel}" },
+      "exit":  { "duration": "{duration.slow}",     "easing": "{easing.emphasizedAccel}" }
+    }
+  },
+
+  "interaction": {
+    "hover":     { "duration": "{duration.fast}",     "easing": "{easing.easeOut}" },
+    "press":     { "duration": "{duration.faster}",   "easing": "{easing.easeIn}" },
+    "focus":     { "duration": "{duration.normal}",   "easing": "{easing.standard}" },
+    "ripple":    { "duration": "{duration.slow}",     "easing": "{easing.easeOut}" },
+    "skeleton":  { "duration": "1500ms",              "easing": "{easing.easeInOut}", "iterationCount": "infinite" },
+    "spin":      { "duration": "700ms",               "easing": "{easing.linear}",   "iterationCount": "infinite" },
+    "pulse":     { "duration": "2000ms",              "easing": "{easing.easeInOut}","iterationCount": "infinite" }
+  },
+
+  "reducedMotion": {
+    "_note": "Use these when prefers-reduced-motion: reduce is detected",
+    "duration":  "0ms",
+    "easing":    "{easing.linear}",
+    "transition":"none"
+  }
+}

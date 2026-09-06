@@ -1,0 +1,128 @@
+{
+  "_meta": {
+    "description": "Spacing token system — 24-step mathematical grid based on 4px base unit",
+    "baseUnit": 4,
+    "unit": "px",
+    "formula": "step × baseUnit"
+  },
+
+  "scale": {
+    "0":    { "px": 0,    "rem": "0rem",      "multiplier": 0 },
+    "px":   { "px": 1,    "rem": "0.0625rem", "multiplier": 0.25 },
+    "0.5":  { "px": 2,    "rem": "0.125rem",  "multiplier": 0.5 },
+    "1":    { "px": 4,    "rem": "0.25rem",   "multiplier": 1 },
+    "1.5":  { "px": 6,    "rem": "0.375rem",  "multiplier": 1.5 },
+    "2":    { "px": 8,    "rem": "0.5rem",    "multiplier": 2 },
+    "2.5":  { "px": 10,   "rem": "0.625rem",  "multiplier": 2.5 },
+    "3":    { "px": 12,   "rem": "0.75rem",   "multiplier": 3 },
+    "3.5":  { "px": 14,   "rem": "0.875rem",  "multiplier": 3.5 },
+    "4":    { "px": 16,   "rem": "1rem",      "multiplier": 4 },
+    "5":    { "px": 20,   "rem": "1.25rem",   "multiplier": 5 },
+    "6":    { "px": 24,   "rem": "1.5rem",    "multiplier": 6 },
+    "7":    { "px": 28,   "rem": "1.75rem",   "multiplier": 7 },
+    "8":    { "px": 32,   "rem": "2rem",      "multiplier": 8 },
+    "9":    { "px": 36,   "rem": "2.25rem",   "multiplier": 9 },
+    "10":   { "px": 40,   "rem": "2.5rem",    "multiplier": 10 },
+    "11":   { "px": 44,   "rem": "2.75rem",   "multiplier": 11 },
+    "12":   { "px": 48,   "rem": "3rem",      "multiplier": 12 },
+    "14":   { "px": 56,   "rem": "3.5rem",    "multiplier": 14 },
+    "16":   { "px": 64,   "rem": "4rem",      "multiplier": 16 },
+    "20":   { "px": 80,   "rem": "5rem",      "multiplier": 20 },
+    "24":   { "px": 96,   "rem": "6rem",      "multiplier": 24 },
+    "28":   { "px": 112,  "rem": "7rem",      "multiplier": 28 },
+    "32":   { "px": 128,  "rem": "8rem",      "multiplier": 32 }
+  },
+
+  "named": {
+    "none":   "{scale.0.rem}",
+    "3xs":    "{scale.0.5.rem}",
+    "2xs":    "{scale.1.rem}",
+    "xs":     "{scale.2.rem}",
+    "sm":     "{scale.3.rem}",
+    "md":     "{scale.4.rem}",
+    "lg":     "{scale.6.rem}",
+    "xl":     "{scale.8.rem}",
+    "2xl":    "{scale.10.rem}",
+    "3xl":    "{scale.12.rem}",
+    "4xl":    "{scale.16.rem}",
+    "5xl":    "{scale.20.rem}",
+    "6xl":    "{scale.24.rem}"
+  },
+
+  "inset": {
+    "xs":     "{scale.1.rem}",
+    "sm":     "{scale.2.rem}",
+    "md":     "{scale.4.rem}",
+    "lg":     "{scale.6.rem}",
+    "xl":     "{scale.8.rem}",
+    "2xl":    "{scale.12.rem}",
+    "squish-sm": "2px 8px",
+    "squish-md": "4px 16px",
+    "squish-lg": "8px 24px",
+    "stretch-sm": "8px 4px",
+    "stretch-md": "12px 8px"
+  },
+
+  "stack": {
+    "2xs":   "{scale.1.rem}",
+    "xs":    "{scale.2.rem}",
+    "sm":    "{scale.3.rem}",
+    "md":    "{scale.4.rem}",
+    "lg":    "{scale.6.rem}",
+    "xl":    "{scale.8.rem}",
+    "2xl":   "{scale.12.rem}",
+    "3xl":   "{scale.16.rem}",
+    "4xl":   "{scale.24.rem}"
+  },
+
+  "inline": {
+    "2xs":   "{scale.1.rem}",
+    "xs":    "{scale.2.rem}",
+    "sm":    "{scale.3.rem}",
+    "md":    "{scale.4.rem}",
+    "lg":    "{scale.6.rem}",
+    "xl":    "{scale.8.rem}",
+    "2xl":   "{scale.12.rem}",
+    "3xl":   "{scale.16.rem}"
+  },
+
+  "layout": {
+    "containerWidth": {
+      "xs":   "20rem",
+      "sm":   "40rem",
+      "md":   "48rem",
+      "lg":   "64rem",
+      "xl":   "80rem",
+      "2xl":  "96rem",
+      "full": "100%"
+    },
+    "contentMaxWidth":  "72rem",
+    "sidebarWidth":     "16rem",
+    "sidebarCollapsed": "4rem",
+    "headerHeight":     "4rem",
+    "footerHeight":     "5rem",
+    "mobileNavHeight":  "3.5rem"
+  },
+
+  "grid": {
+    "columnSm":   4,
+    "columnMd":   8,
+    "columnLg":   12,
+    "gutterSm":   "{scale.4.rem}",
+    "gutterMd":   "{scale.6.rem}",
+    "gutterLg":   "{scale.8.rem}",
+    "marginSm":   "{scale.4.rem}",
+    "marginMd":   "{scale.6.rem}",
+    "marginLg":   "{scale.8.rem}"
+  },
+
+  "breakpoint": {
+    "xs":   "320px",
+    "sm":   "640px",
+    "md":   "768px",
+    "lg":   "1024px",
+    "xl":   "1280px",
+    "2xl":  "1536px",
+    "3xl":  "1920px"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "description": "Token manifest — maps token namespaces to their source files",
+    "version": "1.0.0",
+    "generatedBy": "packages/tokens/src/generate.ts"
+  },
+  "modules": {
+    "color":      "./color.json",
+    "typography": "./typography.json",
+    "spacing":    "./spacing.json",
+    "elevation":  "./elevation.json",
+    "motion":     "./motion.json",
+    "border":     "./border.json"
+  },
+  "themes": ["light", "dark", "accessibility-high-contrast", "cosmic-neon"],
+  "defaultTheme": "light"
+}

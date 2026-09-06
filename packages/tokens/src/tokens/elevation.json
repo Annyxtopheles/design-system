@@ -1,0 +1,233 @@
+{
+  "_meta": {
+    "description": "Elevation shadow system — 12 levels (0=flat, 11=maximum overlay) with ambient, direct, and rim-light layers per theme",
+    "model": "Each level composes: 1 ambient (large-spread, low-opacity) + 1 direct (tight-offset, higher-opacity) + rim-light (levels 4+)",
+    "themes": ["light", "dark", "cosmic-neon"]
+  },
+
+  "light": {
+    "0": {
+      "level":       0,
+      "name":        "flat",
+      "boxShadow":   "none",
+      "description": "No elevation — flush to background surface"
+    },
+    "1": {
+      "level":       1,
+      "name":        "minimal",
+      "boxShadow":   "0px 1px 2px rgba(15, 23, 42, 0.04), 0px 1px 3px rgba(15, 23, 42, 0.10)",
+      "description": "Subtle card lift — form inputs, tags, chips"
+    },
+    "2": {
+      "level":       2,
+      "name":        "low",
+      "boxShadow":   "0px 1px 4px rgba(15, 23, 42, 0.05), 0px 2px 6px rgba(15, 23, 42, 0.10)",
+      "description": "Cards, tiles, list items — resting state"
+    },
+    "3": {
+      "level":       3,
+      "name":        "raised",
+      "boxShadow":   "0px 2px 6px rgba(15, 23, 42, 0.06), 0px 4px 12px rgba(15, 23, 42, 0.10)",
+      "description": "Cards hover state, floating labels"
+    },
+    "4": {
+      "level":       4,
+      "name":        "floating",
+      "boxShadow":   "0px 4px 10px rgba(15, 23, 42, 0.07), 0px 8px 20px rgba(15, 23, 42, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.80)",
+      "description": "Floating action buttons, dropdowns — rim begins"
+    },
+    "5": {
+      "level":       5,
+      "name":        "elevated",
+      "boxShadow":   "0px 6px 14px rgba(15, 23, 42, 0.08), 0px 12px 28px rgba(15, 23, 42, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.90)",
+      "description": "Sticky headers, elevated nav bars"
+    },
+    "6": {
+      "level":       6,
+      "name":        "sticky",
+      "boxShadow":   "0px 8px 18px rgba(15, 23, 42, 0.09), 0px 16px 32px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+      "description": "Sticky positioned elements, focus rings on cards"
+    },
+    "7": {
+      "level":       7,
+      "name":        "popup",
+      "boxShadow":   "0px 10px 24px rgba(15, 23, 42, 0.10), 0px 20px 40px rgba(15, 23, 42, 0.14), inset 0 1px 0 rgba(255, 255, 255, 1.0)",
+      "description": "Tooltips, popups, autocomplete menus"
+    },
+    "8": {
+      "level":       8,
+      "name":        "dropdown",
+      "boxShadow":   "0px 12px 30px rgba(15, 23, 42, 0.12), 0px 24px 48px rgba(15, 23, 42, 0.16), inset 0 1px 0 rgba(255, 255, 255, 1.0)",
+      "description": "Dropdown menus, context menus, select panels"
+    },
+    "9": {
+      "level":       9,
+      "name":        "drawer",
+      "boxShadow":   "0px 16px 40px rgba(15, 23, 42, 0.14), 0px 32px 64px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 1.0)",
+      "description": "Side drawers, slide-over panels"
+    },
+    "10": {
+      "level":       10,
+      "name":        "modal",
+      "boxShadow":   "0px 20px 60px rgba(15, 23, 42, 0.18), 0px 40px 80px rgba(15, 23, 42, 0.22), inset 0 1px 0 rgba(255, 255, 255, 1.0)",
+      "description": "Modal dialogs, full-screen overlays"
+    },
+    "11": {
+      "level":       11,
+      "name":        "peak",
+      "boxShadow":   "0px 24px 80px rgba(15, 23, 42, 0.22), 0px 48px 100px rgba(15, 23, 42, 0.28), inset 0 1px 0 rgba(255, 255, 255, 1.0)",
+      "description": "Maximum elevation — notification toasts, system alerts"
+    }
+  },
+
+  "dark": {
+    "0": {
+      "level":       0,
+      "name":        "flat",
+      "boxShadow":   "none",
+      "description": "No elevation — flush to dark background"
+    },
+    "1": {
+      "level":       1,
+      "name":        "minimal",
+      "boxShadow":   "0px 1px 2px rgba(0, 0, 0, 0.20), 0px 1px 3px rgba(0, 0, 0, 0.30)",
+      "description": "Subtle card lift on dark surface"
+    },
+    "2": {
+      "level":       2,
+      "name":        "low",
+      "boxShadow":   "0px 1px 4px rgba(0, 0, 0, 0.25), 0px 2px 6px rgba(0, 0, 0, 0.35)",
+      "description": "Dark cards, tiles"
+    },
+    "3": {
+      "level":       3,
+      "name":        "raised",
+      "boxShadow":   "0px 2px 6px rgba(0, 0, 0, 0.30), 0px 4px 12px rgba(0, 0, 0, 0.40)",
+      "description": "Card hover on dark theme"
+    },
+    "4": {
+      "level":       4,
+      "name":        "floating",
+      "boxShadow":   "0px 4px 10px rgba(0, 0, 0, 0.35), 0px 8px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06)",
+      "description": "FABs, dropdowns on dark — rim light begins"
+    },
+    "5": {
+      "level":       5,
+      "name":        "elevated",
+      "boxShadow":   "0px 6px 14px rgba(0, 0, 0, 0.40), 0px 12px 28px rgba(0, 0, 0, 0.50), inset 0 1px 0 rgba(255, 255, 255, 0.07)",
+      "description": "Sticky headers on dark"
+    },
+    "6": {
+      "level":       6,
+      "name":        "sticky",
+      "boxShadow":   "0px 8px 18px rgba(0, 0, 0, 0.44), 0px 16px 32px rgba(0, 0, 0, 0.54), inset 0 1px 0 rgba(255, 255, 255, 0.08)",
+      "description": "Sticky elements on dark theme"
+    },
+    "7": {
+      "level":       7,
+      "name":        "popup",
+      "boxShadow":   "0px 10px 24px rgba(0, 0, 0, 0.48), 0px 20px 40px rgba(0, 0, 0, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.09)",
+      "description": "Tooltips and popups on dark"
+    },
+    "8": {
+      "level":       8,
+      "name":        "dropdown",
+      "boxShadow":   "0px 12px 30px rgba(0, 0, 0, 0.52), 0px 24px 48px rgba(0, 0, 0, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.10)",
+      "description": "Dropdown menus on dark"
+    },
+    "9": {
+      "level":       9,
+      "name":        "drawer",
+      "boxShadow":   "0px 16px 40px rgba(0, 0, 0, 0.56), 0px 32px 64px rgba(0, 0, 0, 0.66), inset 0 1px 0 rgba(255, 255, 255, 0.10)",
+      "description": "Side drawers on dark"
+    },
+    "10": {
+      "level":       10,
+      "name":        "modal",
+      "boxShadow":   "0px 20px 60px rgba(0, 0, 0, 0.62), 0px 40px 80px rgba(0, 0, 0, 0.70), inset 0 1px 0 rgba(255, 255, 255, 0.11)",
+      "description": "Modal dialogs on dark"
+    },
+    "11": {
+      "level":       11,
+      "name":        "peak",
+      "boxShadow":   "0px 24px 80px rgba(0, 0, 0, 0.70), 0px 48px 100px rgba(0, 0, 0, 0.78), inset 0 1px 0 rgba(255, 255, 255, 0.12)",
+      "description": "Peak elevation on dark — toasts, system alerts"
+    }
+  },
+
+  "cosmic-neon": {
+    "_note": "Violet/cyan-tinted shadows for the cosmic-neon theme — glow replaces rim light",
+    "0": {
+      "level":       0,
+      "name":        "flat",
+      "boxShadow":   "none",
+      "description": "No elevation — flush to deep space background"
+    },
+    "1": {
+      "level":       1,
+      "name":        "minimal",
+      "boxShadow":   "0px 1px 2px rgba(0, 0, 0, 0.40), 0px 1px 4px rgba(180, 79, 255, 0.06)",
+      "description": "Subtle card lift with hint of violet"
+    },
+    "2": {
+      "level":       2,
+      "name":        "low",
+      "boxShadow":   "0px 1px 4px rgba(0, 0, 0, 0.50), 0px 2px 8px rgba(180, 79, 255, 0.10)",
+      "description": "Low elevation with violet ambient"
+    },
+    "3": {
+      "level":       3,
+      "name":        "raised",
+      "boxShadow":   "0px 2px 6px rgba(0, 0, 0, 0.55), 0px 4px 14px rgba(180, 79, 255, 0.15)",
+      "description": "Raised neon surface"
+    },
+    "4": {
+      "level":       4,
+      "name":        "floating",
+      "boxShadow":   "0px 4px 10px rgba(0, 0, 0, 0.60), 0px 8px 20px rgba(180, 79, 255, 0.20), 0 0 0 1px rgba(180, 79, 255, 0.20)",
+      "description": "Neon floating — border glow ring begins"
+    },
+    "5": {
+      "level":       5,
+      "name":        "elevated",
+      "boxShadow":   "0px 6px 14px rgba(0, 0, 0, 0.65), 0px 12px 28px rgba(180, 79, 255, 0.25), 0 0 0 1px rgba(180, 79, 255, 0.25)",
+      "description": "Neon elevated with stronger violet glow"
+    },
+    "6": {
+      "level":       6,
+      "name":        "sticky",
+      "boxShadow":   "0px 8px 18px rgba(0, 0, 0, 0.68), 0px 16px 32px rgba(180, 79, 255, 0.28), 0 0 8px rgba(180, 79, 255, 0.30)",
+      "description": "Neon sticky with diffused glow"
+    },
+    "7": {
+      "level":       7,
+      "name":        "popup",
+      "boxShadow":   "0px 10px 24px rgba(0, 0, 0, 0.70), 0px 20px 40px rgba(180, 79, 255, 0.30), 0 0 12px rgba(0, 245, 255, 0.20)",
+      "description": "Neon popup — cyan accent glow joins"
+    },
+    "8": {
+      "level":       8,
+      "name":        "dropdown",
+      "boxShadow":   "0px 12px 30px rgba(0, 0, 0, 0.72), 0px 24px 48px rgba(180, 79, 255, 0.32), 0 0 16px rgba(0, 245, 255, 0.25)",
+      "description": "Neon dropdown with dual-color glow"
+    },
+    "9": {
+      "level":       9,
+      "name":        "drawer",
+      "boxShadow":   "0px 16px 40px rgba(0, 0, 0, 0.75), 0px 32px 64px rgba(180, 79, 255, 0.35), 0 0 24px rgba(180, 79, 255, 0.30)",
+      "description": "Neon side drawer"
+    },
+    "10": {
+      "level":       10,
+      "name":        "modal",
+      "boxShadow":   "0px 20px 60px rgba(0, 0, 0, 0.80), 0px 40px 80px rgba(180, 79, 255, 0.40), 0 0 32px rgba(180, 79, 255, 0.35), 0 0 32px rgba(0, 245, 255, 0.15)",
+      "description": "Neon modal — maximum dual-color bloom"
+    },
+    "11": {
+      "level":       11,
+      "name":        "peak",
+      "boxShadow":   "0px 24px 80px rgba(0, 0, 0, 0.85), 0px 48px 100px rgba(180, 79, 255, 0.45), 0 0 48px rgba(180, 79, 255, 0.40), 0 0 48px rgba(0, 245, 255, 0.20), 0 0 80px rgba(255, 45, 159, 0.10)",
+      "description": "Peak neon elevation — tri-color cosmic bloom"
+    }
+  }
+}
