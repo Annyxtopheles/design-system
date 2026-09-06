@@ -1,0 +1,30 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.875rem;
+
+  th, td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--color-border-subtle, #e2e8f0);
+    text-align: left;
+  }
+
+  th {
+    background: var(--color-background-subtle, #f8fafc);
+    font-weight: 700;
+  }
+}
+
+.propName {
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+}
+
+.propType {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  background: var(--color-background-muted, #f1f5f9);
+  padding: 2px 6px;
+  border-radius: 4px;
+}

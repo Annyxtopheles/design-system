@@ -1,0 +1,14 @@
+.root {
+  border: 1px solid var(--color-border-default, #e2e8f0);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.preview {
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-background-base, #ffffff);
+}

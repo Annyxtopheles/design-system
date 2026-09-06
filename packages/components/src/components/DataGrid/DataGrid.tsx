@@ -10,6 +10,7 @@ export interface Column<T> {
   type?: 'text' | 'number' | 'date' | 'badge';
   renderCell?: (value: T[keyof T], row: T) => React.ReactNode;
 }
+export type DataGridColumn<T> = Column<T>;
 
 export interface PaginationInfo {
   page: number;

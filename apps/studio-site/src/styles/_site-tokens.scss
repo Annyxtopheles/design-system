@@ -1,0 +1,12 @@
+// Site-specific tokens
+
+$site-sidebar-width: var(--site-sidebar-width, 280px);
+$site-header-height: var(--site-header-height, 64px);
+$site-content-max-width: 1200px;
+
+$z-index-skip-link: 1000;
+$z-index-header: 100;
+$z-index-sidebar: 90;
+$z-index-dropdown: 200;
+
+$transition-default: 0.2s ease-in-out;

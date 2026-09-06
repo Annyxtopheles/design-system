@@ -1,0 +1,41 @@
+.root {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.75rem;
+  color: #a6adc8;
+}
+
+.pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.copyBtn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}

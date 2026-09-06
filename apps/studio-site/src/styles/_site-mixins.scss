@@ -1,0 +1,33 @@
+@import 'site-tokens';
+
+@mixin respond-sm {
+  @media (min-width: 640px) { @content; }
+}
+
+@mixin respond-md {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin respond-lg {
+  @media (min-width: 1024px) { @content; }
+}
+
+@mixin focus-ring {
+  outline: 2px solid var(--color-border-focus, #0055ff);
+  outline-offset: 2px;
+}
+
+@mixin code-block {
+  font-family: var(--font-mono);
+  background: var(--color-background-muted);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-md);
+  overflow-x: auto;
+}
+
+@mixin doc-section {
+  margin-bottom: var(--spacing-3xl);
+  & > h2 {
+    margin-bottom: var(--spacing-md);
+  }
+}

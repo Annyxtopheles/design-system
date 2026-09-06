@@ -1,0 +1,77 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.hero {
+  h1 { font-size: 2.5rem; font-weight: 800; margin: 0 0 12px; }
+  p { font-size: 1.15rem; color: var(--color-text-secondary, #64748b); margin: 0; }
+}
+
+.themeSwitcher {
+  .buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    button {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--color-border-default, #cbd5e1);
+      background: var(--color-background-base, #ffffff);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      &:hover { border-color: var(--color-interactive-primary, #3b82f6); }
+    }
+  }
+}
+
+.paletteSection {
+  .swatchGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .swatchRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    span { width: 80px; font-weight: 600; font-size: 0.85rem; }
+  }
+  .swatches {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+  }
+  .swatch {
+    flex: 1;
+    height: 36px;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+  }
+}
+
+.semanticColors, .contrastGrid {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    th, td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--color-border-subtle, #e2e8f0);
+      text-align: left;
+      font-size: 0.875rem;
+    }
+    th { background: var(--color-background-subtle, #f8fafc); font-weight: 700; }
+  }
+}
+
+.neonShowcase {
+  padding: 32px;
+  border-radius: 12px;
+  background: #090a16;
+  color: #fff;
+  margin-top: 20px;
+}

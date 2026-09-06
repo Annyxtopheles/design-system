@@ -89,3 +89,40 @@ export const ToastProvider: React.FC<{ children: React.ReactNode, position?: 'to
     </ToastContext.Provider>
   );
 };
+
+export interface ToastContainerProps {
+  children?: React.ReactNode;
+  position?: 'top-right' | 'top-center' | 'bottom-right' | 'bottom-center';
+  maxItems?: number;
+}
+
+export const ToastContainer = ToastProvider;
+
+export const Toast: React.FC<ToastItem> = ({
+  id,
+  title,
+  message,
+  variant = 'default',
+  dismissible = true,
+  action
+}) => (
+  <div className={`ds-Toast ds-Toast--${variant}`} role="alert">
+    <div className="ds-Toast__content">
+      {title && <div className="ds-Toast__title">{title}</div>}
+      <div className="ds-Toast__message">{message}</div>
+    </div>
+    {action && (
+      <button className="ds-Toast__action" onClick={action.onClick}>
+        {action.label}
+      </button>
+    )}
+    {dismissible && (
+      <button className="ds-Toast__close" aria-label="Dismiss toast">
+        &times;
+      </button>
+    )}
+  </div>
+);
+
+export default Toast;
+

@@ -1,0 +1,33 @@
+.root {
+  width: 200px;
+  position: sticky;
+  top: 80px;
+  padding: 16px;
+  font-size: 0.85rem;
+}
+
+.title {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.725rem;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary, #94a3b8);
+  margin-bottom: 10px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link {
+  color: var(--color-text-secondary, #64748b);
+  text-decoration: none;
+  &:hover {
+    color: var(--color-text-primary, #0f172a);
+  }
+}

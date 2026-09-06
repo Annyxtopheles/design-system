@@ -1,0 +1,99 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #1e293b);
+}
+
+.description {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary, #94a3b8);
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider {
+  flex: 1;
+  accent-color: var(--color-interactive-primary, #3b82f6);
+  cursor: pointer;
+}
+
+.sliderValue {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  min-width: 32px;
+  text-align: right;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:checked + .toggleSlider {
+      background-color: var(--color-interactive-primary, #3b82f6);
+      &:before {
+        transform: translateX(20px);
+      }
+    }
+  }
+
+  .toggleSlider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: var(--color-background-muted, #cbd5e1);
+    transition: 0.2s;
+    border-radius: 24px;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.2s;
+      border-radius: 50%;
+    }
+  }
+}
+
+.select, .textInput, .numberInput {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-default, #cbd5e1);
+  background: var(--color-background-base, #ffffff);
+  color: var(--color-text-primary, #0f172a);
+  font-size: 0.85rem;
+  outline: none;
+
+  &:focus {
+    border-color: var(--color-interactive-primary, #3b82f6);
+  }
+}
+
+.colorPicker {
+  width: 40px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -35,7 +35,19 @@ const NotificationItem = ({ notif, onMarkRead, onDismiss }: any) => {
   );
 };
 
-export const NotificationCenter: React.FC<{notifications: Notification[]}> = ({ notifications: initNotifs }) => {
+export interface NotificationCenterProps {
+  notifications?: Notification[];
+  onMarkRead?: (id: string) => void;
+  onMarkAllRead?: () => void;
+  onDismiss?: (id: string) => void;
+  onDismissAll?: () => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  maxHeight?: string | number;
+  groupByType?: boolean;
+}
+
+export const NotificationCenter: React.FC<NotificationCenterProps> = ({ notifications: initNotifs = [] }) => {
   const [open, setOpen] = useState(false);
   const [notifs, setNotifs] = useState(initNotifs);
 
