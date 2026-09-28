@@ -12,7 +12,12 @@ export interface DesignTokenRefProps {
   tokens: TokenRef[];
 }
 
-export const DesignTokenRef: React.FC<DesignTokenRefProps> = ({ tokens }) => {
+export const DesignTokenRef: React.FC<DesignTokenRefProps> = ({ tokens = [] }) => {
+  const safeTokens = Array.isArray(tokens) ? tokens : [];
+  if (safeTokens.length === 0) {
+    return <p style={{ color: 'var(--color-text-secondary)', fontStyle: 'italic' }}>No tokens registered.</p>;
+  }
+
   const renderSpecimen = (token: TokenRef) => {
     switch (token.category) {
       case 'color':
@@ -43,8 +48,8 @@ export const DesignTokenRef: React.FC<DesignTokenRefProps> = ({ tokens }) => {
           </tr>
         </thead>
         <tbody>
-          {tokens.map(token => (
-            <tr key={token.cssVar}>
+          {safeTokens.map((token, i) => (
+            <tr key={`${token.cssVar || 'token'}-${i}`}>
               <td><code>{token.cssVar}</code></td>
               <td>{renderSpecimen(token)}</td>
               <td>{token.usage}</td>

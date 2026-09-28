@@ -5,7 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { NAV_ITEMS, NavItem } from '../../lib/navigation';
 
-export default function Sidebar() {
+export interface SidebarProps {
+  onNavigate?: () => void;
+  onClose?: () => void;
+  style?: React.CSSProperties;
+  className?: string;
+}
+
+export default function Sidebar({ onNavigate, onClose, style, className }: SidebarProps = {}) {
   const pathname = usePathname();
   const [search, setSearch] = useState('');
 
@@ -23,42 +30,66 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside style={{
-      width: 'var(--site-sidebar-width, 300px)',
-      height: '100vh',
-      position: 'sticky',
-      top: 0,
-      borderRight: '1px solid var(--color-border-default, #e2e8f0)',
-      background: 'var(--color-surface-sidebar, #f8fafc)',
-      overflowY: 'auto',
-      padding: '24px 20px',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '20px'
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <div style={{
-          width: '32px',
-          height: '32px',
-          borderRadius: '8px',
-          background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#fff',
-          fontWeight: 800,
-          fontSize: '18px'
-        }}>
-          D
-        </div>
-        <div>
-          <div style={{ fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.02em', color: 'var(--color-text-primary, #0f172a)' }}>
-            Studio System
+    <aside
+      className={className}
+      style={{
+        width: 'var(--site-sidebar-width, 300px)',
+        height: '100vh',
+        position: 'sticky',
+        top: 0,
+        borderRight: '1px solid var(--color-border-default, #e2e8f0)',
+        background: 'var(--color-surface-sidebar, #f8fafc)',
+        overflowY: 'auto',
+        padding: '24px 20px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        ...style,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{
+            width: '32px',
+            height: '32px',
+            borderRadius: '8px',
+            background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#fff',
+            fontWeight: 800,
+            fontSize: '18px'
+          }}>
+            D
           </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-text-tertiary, #64748b)' }}>
-            v1.0.0 • 1,114 Tokens • 35 Components
+          <div>
+            <div style={{ fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.02em', color: 'var(--color-text-primary, #0f172a)' }}>
+              Studio System
+            </div>
+            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-tertiary, #64748b)' }}>
+              v1.0.0 • 1,114 Tokens • 35 Components
+            </div>
           </div>
         </div>
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close sidebar"
+            style={{
+              background: 'transparent',
+              border: 'none',
+              fontSize: '1.25rem',
+              color: 'var(--color-text-secondary)',
+              cursor: 'pointer',
+              padding: '4px 8px',
+              borderRadius: '4px',
+            }}
+          >
+            ✕
+          </button>
+        )}
       </div>
 
       <input 
@@ -105,6 +136,7 @@ export default function Sidebar() {
                     <li key={item.slug}>
                       <Link 
                         href={targetHref as any} 
+                        onClick={() => onNavigate?.()}
                         style={{
                           textDecoration: 'none',
                           display: 'flex',

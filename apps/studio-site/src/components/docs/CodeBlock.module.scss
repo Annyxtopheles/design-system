@@ -2,40 +2,109 @@
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  background: #1e1e2e;
-  color: #cdd6f4;
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  border: 1px solid var(--color-border-default, #334155);
   font-family: var(--font-mono, monospace);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   line-height: 1.6;
-  margin: 12px 0;
+  margin: 14px 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.75rem;
-  color: #a6adc8;
+  padding: 8px 16px;
+  background: #1e293b !important;
+  border-bottom: 1px solid #334155 !important;
+  font-size: 0.78rem;
+  color: #94a3b8 !important;
+  font-weight: 600;
+}
+
+.filename {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.preContainer {
+  position: relative;
 }
 
 .pre {
-  margin: 0;
-  padding: 16px;
-  overflow-x: auto;
+  margin: 0 !important;
+  padding: 16px 20px !important;
+  overflow-x: auto !important;
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+.code {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+  padding: 0 !important;
+  font-family: var(--font-mono, monospace) !important;
+  font-size: 0.875rem !important;
+}
+
+.line {
+  display: flex;
+  align-items: flex-start;
+  min-height: 1.6em;
+
+  &.highlighted {
+    background: rgba(56, 189, 248, 0.15);
+    margin: 0 -20px;
+    padding: 0 20px;
+  }
+}
+
+.lineNumber {
+  user-select: none;
+  width: 2.2rem;
+  padding-right: 1rem;
+  text-align: right;
+  color: #475569 !important;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.lineContent {
+  flex: 1;
+  color: #f1f5f9 !important;
+  white-space: pre;
+  word-break: normal;
 }
 
 .copyBtn {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border: none;
-  padding: 4px 8px;
+  background: #334155;
+  color: #f8fafc;
+  border: 1px solid #475569;
+  padding: 4px 10px;
   border-radius: 4px;
   font-size: 0.75rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.15s ease;
+
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #475569;
+    color: #ffffff;
   }
+
+  &.copied {
+    background: #16a34a;
+    border-color: #22c55e;
+    color: #ffffff;
+  }
+}
+
+.floatingCopyBtn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 5;
 }

@@ -1,23 +1,56 @@
-"use client";
-import React, { useState } from "react";
-import styles from "./PopoverPlayground.module.scss";
+'use client';
+import React from 'react';
+import { Popover, Button } from '@design-system/components';
+import { ControlPanel } from '@/components/docs/ControlPanel';
 
 export default function PopoverPlayground() {
-  const [state, setState] = useState({});
+  const defaultProps = {
+    placement: 'bottom',
+    showArrow: true,
+    title: 'Popover Details',
+  };
+
+  const controls = [
+    {
+      name: 'placement',
+      label: 'Placement',
+      type: 'select',
+      options: [
+        { label: 'Bottom', value: 'bottom' },
+        { label: 'Top', value: 'top' },
+        { label: 'Left', value: 'left' },
+        { label: 'Right', value: 'right' },
+      ],
+    },
+    { name: 'showArrow', label: 'Show Arrow Pointer', type: 'toggle' },
+    { name: 'title', label: 'Popover Title', type: 'text' },
+  ];
 
   return (
-    <div className={styles.playground}>
-      <div className={styles.controls}>
-        <h3>Controls</h3>
-        {/* Mock controls for Popover */}
-        <p>Modify component state here.</p>
-      </div>
-      <div className={styles.preview}>
-        <h3>Preview</h3>
-        <div className="ss-Popover__preview">
-          Mock Popover UI
+    <ControlPanel
+      componentName="Popover"
+      defaultProps={defaultProps}
+      controls={controls as any}
+      renderComponent={(props) => (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '220px', padding: '32px' }}>
+          <Popover
+            placement={props.placement}
+            showArrow={props.showArrow}
+            title={props.title}
+            trigger={<Button variant="secondary">Click for Popover</Button>}
+            content={
+              <div style={{ padding: '8px 4px', maxWidth: '240px' }}>
+                <p style={{ margin: '0 0 8px', fontSize: '0.875rem' }}>
+                  Rich interactive overlays for contextual options, mini-forms, or user bios.
+                </p>
+                <Button size="sm" variant="primary">
+                  Got it
+                </Button>
+              </div>
+            }
+          />
         </div>
-      </div>
-    </div>
+      )}
+    />
   );
 }

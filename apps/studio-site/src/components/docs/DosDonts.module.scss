@@ -10,9 +10,11 @@
 }
 
 .card {
-  padding: 20px;
-  border-radius: 8px;
+  padding: 20px 24px;
+  border-radius: 10px;
   border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
 
   &.do {
     background: #f0fdf4;
@@ -33,10 +35,12 @@
   margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  text-wrap: balance;
 }
 
 .cardDesc {
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.6;
   margin: 0;
+  text-wrap: pretty;
 }

@@ -1,23 +1,48 @@
-"use client";
-import React, { useState } from "react";
-import styles from "./FileUploadPlayground.module.scss";
+'use client';
+import React from 'react';
+import { FileUpload } from '@design-system/components';
+import { ControlPanel } from '@/components/docs/ControlPanel';
 
 export default function FileUploadPlayground() {
-  const [state, setState] = useState({});
+  const defaultProps = {
+    accept: 'image/*,.pdf,.svg',
+    multiple: true,
+    disabled: false,
+    maxFiles: 5,
+  };
+
+  const controls = [
+    { name: 'accept', label: 'Accepted Formats', type: 'text' },
+    {
+      name: 'maxFiles',
+      label: 'Max Files Limit',
+      type: 'select',
+      options: [
+        { label: '1 File', value: 1 },
+        { label: '3 Files', value: 3 },
+        { label: '5 Files', value: 5 },
+        { label: '10 Files', value: 10 },
+      ],
+    },
+    { name: 'multiple', label: 'Allow Multiple', type: 'toggle' },
+    { name: 'disabled', label: 'Disabled State', type: 'toggle' },
+  ];
 
   return (
-    <div className={styles.playground}>
-      <div className={styles.controls}>
-        <h3>Controls</h3>
-        {/* Mock controls for FileUpload */}
-        <p>Modify component state here.</p>
-      </div>
-      <div className={styles.preview}>
-        <h3>Preview</h3>
-        <div className="ss-FileUpload__preview">
-          Mock FileUpload UI
+    <ControlPanel
+      componentName="FileUpload"
+      defaultProps={defaultProps}
+      controls={controls as any}
+      renderComponent={(props) => (
+        <div style={{ width: '100%', maxWidth: '520px', margin: '0 auto', padding: '16px' }}>
+          <FileUpload
+            accept={props.accept}
+            maxFiles={props.maxFiles}
+            multiple={props.multiple}
+            disabled={props.disabled}
+          />
         </div>
-      </div>
-    </div>
+      )}
+    />
   );
 }

@@ -14,7 +14,12 @@ export interface PropsTableProps {
   props: PropDefinition[];
 }
 
-export const PropsTable: React.FC<PropsTableProps> = ({ props }) => {
+export const PropsTable: React.FC<PropsTableProps> = ({ props = [] }) => {
+  const safeProps = Array.isArray(props) ? props : [];
+  if (safeProps.length === 0) {
+    return <p style={{ color: 'var(--color-text-secondary)', fontStyle: 'italic' }}>Standard HTML / React attributes apply.</p>;
+  }
+
   return (
     <div className={styles.root}>
       <table className={styles.table}>

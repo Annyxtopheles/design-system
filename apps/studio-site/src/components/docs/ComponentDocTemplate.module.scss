@@ -1,0 +1,159 @@
+.root {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 16px 24px 64px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: var(--color-text-tertiary, #64748b);
+  margin-bottom: 20px;
+
+  a {
+    color: var(--color-text-secondary, #475569);
+    text-decoration: none;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--color-interactive-primary, #3b82f6);
+    }
+  }
+
+  .separator {
+    color: var(--color-border-strong, #cbd5e1);
+  }
+
+  .current {
+    color: var(--color-text-primary, #0f172a);
+    font-weight: 500;
+  }
+}
+
+.header {
+  margin-bottom: 36px;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary, #0f172a);
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.wcagBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  background: var(--color-interactive-primarySubtle, rgba(59, 130, 246, 0.1));
+  color: var(--color-interactive-primary, #2563eb);
+  border: 1px solid var(--color-border-focus, rgba(59, 130, 246, 0.2));
+  border-radius: 6px;
+}
+
+.description {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary, #475569);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.importBar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--color-background-subtle, #f8fafc);
+  border: 1px solid var(--color-border-default, #e2e8f0);
+  border-radius: 8px;
+  padding: 6px 12px;
+  max-width: 100%;
+}
+
+.importCode {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  color: var(--color-text-primary, #0f172a);
+  background: transparent;
+  padding: 0;
+}
+
+.copyBtn {
+  appearance: none;
+  background: var(--color-background-base, #ffffff);
+  border: 1px solid var(--color-border-default, #cbd5e1);
+  color: var(--color-text-secondary, #475569);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: var(--color-interactive-secondaryHover, #f1f5f9);
+    color: var(--color-text-primary, #0f172a);
+  }
+}
+
+.sandboxSection {
+  margin-bottom: 48px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #0f172a);
+  margin: 0;
+}
+
+.sectionHint {
+  font-size: 0.85rem;
+  color: var(--color-text-tertiary, #64748b);
+}
+
+.playgroundWrapper {
+  background: var(--color-surface-card, var(--color-background-base, #ffffff));
+  border: 1px solid var(--color-border-default, #e2e8f0);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.05));
+  overflow: hidden;
+}
+
+.tabPane {
+  padding-top: 24px;
+}
+
+.tabIntro {
+  line-height: 1.6;
+  color: var(--color-text-secondary, #475569);
+  margin-bottom: 24px;
+}
+
+.subHeading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #0f172a);
+  margin: 32px 0 16px;
+}
+
+.dosDontsSection {
+  margin-top: 36px;
+}

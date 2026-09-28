@@ -101,3 +101,15 @@ export const api: ApiContent = {
     { title: 'Variants', description: 'The different visual styles', code: '<Button variant="primary">Primary</Button>\n<Button variant="secondary">Secondary</Button>' }
   ]
 };
+
+export const ButtonData = {
+  title: meta.name,
+  name: meta.name,
+  slug: meta.slug,
+  description: meta.description,
+  usage: usage.whenToUse,
+  wcag: accessibility.wcagCriteria,
+  dosAndDonts: usage.dosDonts?.map((d) => ({ type: d.type, description: d.description, image: '' })) || [],
+  tokens: design.tokensUsed?.map((t) => ({ token: t.name, property: t.type, default: '' })) || [],
+};
+
