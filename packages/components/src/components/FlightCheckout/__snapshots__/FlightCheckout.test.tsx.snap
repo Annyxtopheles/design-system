@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlightCheckout matches snapshot 1`] = `
+<div>
+  <div
+    class="ds-FlightCheckout"
+  >
+    <div
+      class="ds-FlightCheckout__stepper"
+    >
+      <div
+        aria-current="step"
+        class="ds-FlightCheckout__step-indicator ds-FlightCheckout__step-indicator--active"
+      >
+        <div
+          class="ds-FlightCheckout__step-circle"
+        >
+          1
+        </div>
+        <span
+          class="ds-FlightCheckout__step-label"
+        >
+          Search
+        </span>
+      </div>
+      <div
+        class="ds-FlightCheckout__step-indicator "
+      >
+        <div
+          class="ds-FlightCheckout__step-circle"
+        >
+          2
+        </div>
+        <span
+          class="ds-FlightCheckout__step-label"
+        >
+          Flights
+        </span>
+      </div>
+      <div
+        class="ds-FlightCheckout__step-indicator "
+      >
+        <div
+          class="ds-FlightCheckout__step-circle"
+        >
+          3
+        </div>
+        <span
+          class="ds-FlightCheckout__step-label"
+        >
+          Seats
+        </span>
+      </div>
+      <div
+        class="ds-FlightCheckout__step-indicator "
+      >
+        <div
+          class="ds-FlightCheckout__step-circle"
+        >
+          4
+        </div>
+        <span
+          class="ds-FlightCheckout__step-label"
+        >
+          Passengers
+        </span>
+      </div>
+      <div
+        class="ds-FlightCheckout__step-indicator "
+      >
+        <div
+          class="ds-FlightCheckout__step-circle"
+        >
+          5
+        </div>
+        <span
+          class="ds-FlightCheckout__step-label"
+        >
+          Payment
+        </span>
+      </div>
+      <div
+        class="ds-FlightCheckout__step-indicator "
+      >
+        <div
+          class="ds-FlightCheckout__step-circle"
+        >
+          6
+        </div>
+        <span
+          class="ds-FlightCheckout__step-label"
+        >
+          Confirm
+        </span>
+      </div>
+    </div>
+    <div
+      class="ds-FlightCheckout__content "
+    >
+      <div
+        class="ds-FlightCheckout__step"
+      >
+        <h2>
+          Search Flights
+        </h2>
+        <div
+          class="ds-FlightCheckout__form-group"
+        >
+          <label>
+            Origin
+          </label>
+          <input
+            aria-label="Origin"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="ds-FlightCheckout__form-group"
+        >
+          <label>
+            Destination
+          </label>
+          <input
+            aria-label="Destination"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="ds-FlightCheckout__form-row"
+        >
+          <div
+            class="ds-FlightCheckout__form-group"
+          >
+            <label>
+              Depart Date
+            </label>
+            <input
+              aria-label="Depart Date"
+              type="date"
+              value=""
+            />
+          </div>
+          <div
+            class="ds-FlightCheckout__form-group"
+          >
+            <label>
+              Return Date
+            </label>
+            <input
+              aria-label="Return Date"
+              type="date"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="ds-FlightCheckout__form-row"
+        >
+          <div
+            class="ds-FlightCheckout__form-group"
+          >
+            <label>
+              Passengers
+            </label>
+            <div
+              class="ds-FlightCheckout__counter"
+            >
+              <button
+                aria-label="Decrease passengers"
+                type="button"
+              >
+                -
+              </button>
+              <span>
+                1
+              </span>
+              <button
+                aria-label="Increase passengers"
+                type="button"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div
+            class="ds-FlightCheckout__form-group"
+          >
+            <label>
+              Cabin Class
+            </label>
+            <select
+              aria-label="Cabin Class"
+            >
+              <option
+                value="economy"
+              >
+                Economy
+              </option>
+              <option
+                value="business"
+              >
+                Business
+              </option>
+              <option
+                value="first"
+              >
+                First
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          class="ds-FlightCheckout__actions"
+        >
+          <button
+            class="ds-FlightCheckout__btn ds-FlightCheckout__btn--primary"
+            type="button"
+          >
+            Search Flights
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

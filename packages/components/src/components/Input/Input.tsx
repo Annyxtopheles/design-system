@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, ReactNode, forwardRef, useId } from 'react';
+import { type InputHTMLAttributes, type ReactNode, forwardRef, useId } from 'react';
 import './Input.scss';
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {

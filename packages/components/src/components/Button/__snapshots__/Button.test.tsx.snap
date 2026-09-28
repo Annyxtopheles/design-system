@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button matches snapshot 1`] = `
+<button
+  aria-busy="false"
+  class="ds-Button ds-Button--primary ds-Button--md"
+>
+  <span
+    class="ds-Button__content"
+  >
+    Snapshot
+  </span>
+</button>
+`;

@@ -249,11 +249,43 @@ function buildCss(flat: Record<string, TokenValue>): string {
   lines.push("@layer tokens {");
   lines.push("");
 
+  const isMetadataKey = (k: string) =>
+    k.endsWith(".description") ||
+    k.endsWith(".name") ||
+    k.endsWith(".level") ||
+    k.endsWith(".step") ||
+    k.endsWith(".multiplier") ||
+    k.endsWith(".unit") ||
+    k.endsWith(".suggestedWeight");
+
   // ── :root → base palette + structural tokens (non-semantic) ──────────────
   lines.push("  /* ── Base Palette & Structural Tokens ── */");
   lines.push("  :root {");
+
+  // Font family & common aliases
+  lines.push("    --font-sans: var(--typography-fontFamily-sans);");
+  lines.push("    --font-serif: var(--typography-fontFamily-serif);");
+  lines.push("    --font-mono: var(--typography-fontFamily-mono);");
+  lines.push("    --font-display: var(--typography-fontFamily-display);");
+  lines.push("    --color-border-base: var(--color-border-default);");
+  lines.push("    --color-bg-primary: var(--color-background-base);");
+  lines.push("    --color-brand-primary: var(--color-interactive-primary);");
+  lines.push("");
+
+  // Named shadow aliases (referencing theme-adaptive --elevation-N)
+  lines.push("    /* ── Named Shadow Aliases ── */");
+  lines.push("    --shadow-0: var(--elevation-0);");
+  lines.push("    --shadow-xs: var(--elevation-1);");
+  lines.push("    --shadow-sm: var(--elevation-2);");
+  lines.push("    --shadow-md: var(--elevation-3);");
+  lines.push("    --shadow-lg: var(--elevation-4);");
+  lines.push("    --shadow-xl: var(--elevation-6);");
+  lines.push("    --shadow-2xl: var(--elevation-8);");
+  lines.push("    --shadow-3xl: var(--elevation-10);");
+  lines.push("");
+
   const baseKeys = Object.entries(flat).filter(
-    ([k]) => !k.startsWith("color.semantic.")
+    ([k]) => !k.startsWith("color.semantic.") && !isMetadataKey(k)
   );
   for (const [k, v] of baseKeys) {
     lines.push(`    ${toCssVarName(k)}: ${v};`);
@@ -262,31 +294,39 @@ function buildCss(flat: Record<string, TokenValue>): string {
   lines.push("");
 
   // ── Theme layers ──────────────────────────────────────────────────────────
-  const themeConfigs: Array<{ selector: string; prefix: string; label: string }> =
-    [
-      {
-        selector: ':root, [data-theme="light"]',
-        prefix: "color.semantic.light.",
-        label: "Light Theme (default)",
-      },
-      {
-        selector: '[data-theme="dark"]',
-        prefix: "color.semantic.dark.",
-        label: "Dark Theme",
-      },
-      {
-        selector: '[data-theme="accessibility-high-contrast"]',
-        prefix: "color.semantic.accessibility-high-contrast.",
-        label: "Accessibility High-Contrast Theme",
-      },
-      {
-        selector: '[data-theme="cosmic-neon"]',
-        prefix: "color.semantic.cosmic-neon.",
-        label: "Cosmic Neon Theme",
-      },
-    ];
+  const themeConfigs: Array<{
+    selector: string;
+    prefix: string;
+    elevationTheme: string;
+    label: string;
+  }> = [
+    {
+      selector: ':root, [data-theme="light"]',
+      prefix: "color.semantic.light.",
+      elevationTheme: "light",
+      label: "Light Theme (default)",
+    },
+    {
+      selector: '[data-theme="dark"]',
+      prefix: "color.semantic.dark.",
+      elevationTheme: "dark",
+      label: "Dark Theme",
+    },
+    {
+      selector: '[data-theme="accessibility-high-contrast"]',
+      prefix: "color.semantic.accessibility-high-contrast.",
+      elevationTheme: "light",
+      label: "Accessibility High-Contrast Theme",
+    },
+    {
+      selector: '[data-theme="cosmic-neon"]',
+      prefix: "color.semantic.cosmic-neon.",
+      elevationTheme: "cosmic-neon",
+      label: "Cosmic Neon Theme",
+    },
+  ];
 
-  for (const { selector, prefix, label } of themeConfigs) {
+  for (const { selector, prefix, elevationTheme, label } of themeConfigs) {
     const themeEntries = Object.entries(flat).filter(([k]) =>
       k.startsWith(prefix)
     );
@@ -294,6 +334,18 @@ function buildCss(flat: Record<string, TokenValue>): string {
 
     lines.push(`  /* ── ${label} ── */`);
     lines.push(`  ${selector} {`);
+
+    // Emit theme-adaptive elevation tokens: --elevation-0 .. --elevation-11
+    lines.push(`    /* Elevation Depth (Theme: ${elevationTheme}) */`);
+    for (let i = 0; i <= 11; i++) {
+      const shadowKey = `elevation.${elevationTheme}.${i}.boxShadow`;
+      const val = flat[shadowKey] ?? (i === 0 ? "none" : flat[`elevation.light.${i}.boxShadow`]);
+      if (val !== undefined) {
+        lines.push(`    --elevation-${i}: ${val};`);
+        lines.push(`    --shadow-${i}: ${val};`);
+      }
+    }
+    lines.push("");
 
     for (const [k, v] of themeEntries) {
       // Strip the theme-specific prefix → expose as theme-agnostic var
@@ -463,10 +515,98 @@ function buildJs(
   lines.push(
     "  return `var(--${path.replace(/\\./g, '-')})`;",
   );
-  lines.push("}");
-  lines.push("");
   lines.push("module.exports = { tokens, getToken, cssVar };");
   return lines.join("\n");
+}
+
+function getDtcgType(path: string): string {
+  if (path.startsWith("color")) return "color";
+  if (path.startsWith("spacing")) return "dimension";
+  if (path.startsWith("border.radius") || path.startsWith("border.width")) return "dimension";
+  if (path.startsWith("elevation")) return "shadow";
+  if (path.startsWith("motion.duration")) return "duration";
+  if (path.startsWith("motion.easing")) return "cubicBezier";
+  if (path.startsWith("typography.fontFamily")) return "fontFamily";
+  if (path.startsWith("typography.fontWeight")) return "fontWeight";
+  if (path.startsWith("typography.fontSize")) return "dimension";
+  if (path.startsWith("typography.lineHeight")) return "number";
+  if (path.startsWith("typography.letterSpacing")) return "dimension";
+  return "string";
+}
+
+function buildDtcgTokens(flat: Record<string, TokenValue>): any {
+  const root: any = {};
+  for (const [key, val] of Object.entries(flat)) {
+    if (key.startsWith("_")) continue;
+    const parts = key.split(".");
+    let curr = root;
+    for (let i = 0; i < parts.length - 1; i++) {
+      if (!curr[parts[i]]) curr[parts[i]] = {};
+      curr = curr[parts[i]];
+    }
+    const leaf = parts[parts.length - 1];
+    curr[leaf] = {
+      $value: val,
+      $type: getDtcgType(key),
+      $description: `Design System token: ${key}`,
+    };
+  }
+  return root;
+}
+
+function buildTokensStudio(flat: Record<string, TokenValue>): any {
+  const sets: Record<string, any> = {
+    global: {},
+    light: {},
+    dark: {},
+    "accessibility-high-contrast": {},
+    "cosmic-neon": {},
+  };
+
+  for (const [key, val] of Object.entries(flat)) {
+    if (key.startsWith("_")) continue;
+
+    let targetSet = "global";
+    let subPath = key;
+
+    if (key.startsWith("color.semantic.light.")) {
+      targetSet = "light";
+      subPath = key.replace("color.semantic.light.", "color.");
+    } else if (key.startsWith("color.semantic.dark.")) {
+      targetSet = "dark";
+      subPath = key.replace("color.semantic.dark.", "color.");
+    } else if (key.startsWith("color.semantic.accessibility-high-contrast.")) {
+      targetSet = "accessibility-high-contrast";
+      subPath = key.replace("color.semantic.accessibility-high-contrast.", "color.");
+    } else if (key.startsWith("color.semantic.cosmic-neon.")) {
+      targetSet = "cosmic-neon";
+      subPath = key.replace("color.semantic.cosmic-neon.", "color.");
+    } else if (key.startsWith("elevation.light.")) {
+      targetSet = "light";
+      subPath = key.replace("elevation.light.", "elevation.");
+    } else if (key.startsWith("elevation.dark.")) {
+      targetSet = "dark";
+      subPath = key.replace("elevation.dark.", "elevation.");
+    } else if (key.startsWith("elevation.cosmic-neon.")) {
+      targetSet = "cosmic-neon";
+      subPath = key.replace("elevation.cosmic-neon.", "elevation.");
+    }
+
+    const parts = subPath.split(".");
+    let curr = sets[targetSet];
+    for (let i = 0; i < parts.length - 1; i++) {
+      if (!curr[parts[i]]) curr[parts[i]] = {};
+      curr = curr[parts[i]];
+    }
+    const leaf = parts[parts.length - 1];
+    curr[leaf] = {
+      value: val,
+      type: getDtcgType(key),
+      description: `Token: ${key}`,
+    };
+  }
+
+  return sets;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -508,6 +648,10 @@ function generate(): GeneratedOutput {
   console.log("   Building JS runtime module…");
   const js = buildJs(resolved, resolvedTree);
 
+  console.log("   Building Figma DTCG & Tokens Studio formats…");
+  const dtcg = buildDtcgTokens(resolved);
+  const tokensStudio = buildTokensStudio(resolved);
+
   // ── Write dist/ ────────────────────────────────────────────────────────────
   if (!fs.existsSync(DIST_DIR)) {
     fs.mkdirSync(DIST_DIR, { recursive: true });
@@ -518,12 +662,32 @@ function generate(): GeneratedOutput {
   const dtsPath = path.join(DIST_DIR, "tokens.d.ts");
   const jsPath = path.join(DIST_DIR, "tokens.js");
   const flatPath = path.join(DIST_DIR, "tokens.flat.json");
+  const dtcgPath = path.join(DIST_DIR, "tokens.dtcg.json");
+  const tokensStudioPath = path.join(DIST_DIR, "tokens.tokens-studio.json");
 
   fs.writeFileSync(jsonPath, JSON.stringify(resolvedTree, null, 2), "utf-8");
   fs.writeFileSync(cssPath, css, "utf-8");
   fs.writeFileSync(dtsPath, dts, "utf-8");
   fs.writeFileSync(jsPath, js, "utf-8");
   fs.writeFileSync(flatPath, JSON.stringify(resolved, null, 2), "utf-8");
+  fs.writeFileSync(dtcgPath, JSON.stringify(dtcg, null, 2), "utf-8");
+  fs.writeFileSync(tokensStudioPath, JSON.stringify(tokensStudio, null, 2), "utf-8");
+
+  // Sync into apps/studio-site if present
+  const studioSiteTokensCss = path.resolve(ROOT, "..", "..", "apps", "studio-site", "src", "styles", "tokens.css");
+  if (fs.existsSync(path.dirname(studioSiteTokensCss))) {
+    fs.writeFileSync(studioSiteTokensCss, css, "utf-8");
+    console.log("   ✓ Synced tokens.css to apps/studio-site/src/styles/tokens.css");
+  }
+
+  const studioSitePublicTokens = path.resolve(ROOT, "..", "..", "apps", "studio-site", "public", "tokens");
+  if (fs.existsSync(studioSitePublicTokens)) {
+    fs.writeFileSync(path.join(studioSitePublicTokens, "tokens.dtcg.json"), JSON.stringify(dtcg, null, 2), "utf-8");
+    fs.writeFileSync(path.join(studioSitePublicTokens, "tokens.tokens-studio.json"), JSON.stringify(tokensStudio, null, 2), "utf-8");
+    fs.writeFileSync(path.join(studioSitePublicTokens, "tokens.json"), JSON.stringify(resolvedTree, null, 2), "utf-8");
+    fs.writeFileSync(path.join(studioSitePublicTokens, "tokens.css"), css, "utf-8");
+    console.log("   ✓ Synced DTCG & Tokens Studio JSON to apps/studio-site/public/tokens/");
+  }
 
   const stats = {
     json: fs.statSync(jsonPath).size,
@@ -531,15 +695,19 @@ function generate(): GeneratedOutput {
     dts: fs.statSync(dtsPath).size,
     js: fs.statSync(jsPath).size,
     flat: fs.statSync(flatPath).size,
+    dtcg: fs.statSync(dtcgPath).size,
+    studio: fs.statSync(tokensStudioPath).size,
   };
 
   console.log("");
   console.log("✅  dist/ output:");
-  console.log(`   tokens.json       ${(stats.json / 1024).toFixed(1)} KB  — resolved token tree`);
-  console.log(`   tokens.flat.json  ${(stats.flat / 1024).toFixed(1)} KB  — flat dot-path map`);
-  console.log(`   tokens.css        ${(stats.css / 1024).toFixed(1)} KB  — CSS custom properties (all themes)`);
-  console.log(`   tokens.d.ts       ${(stats.dts / 1024).toFixed(1)} KB  — TypeScript declarations`);
-  console.log(`   tokens.js         ${(stats.js / 1024).toFixed(1)} KB  — CJS runtime module`);
+  console.log(`   tokens.json            ${(stats.json / 1024).toFixed(1)} KB  — resolved token tree`);
+  console.log(`   tokens.flat.json       ${(stats.flat / 1024).toFixed(1)} KB  — flat dot-path map`);
+  console.log(`   tokens.css             ${(stats.css / 1024).toFixed(1)} KB  — CSS custom properties (all themes)`);
+  console.log(`   tokens.d.ts            ${(stats.dts / 1024).toFixed(1)} KB  — TypeScript declarations`);
+  console.log(`   tokens.js              ${(stats.js / 1024).toFixed(1)} KB  — CJS runtime module`);
+  console.log(`   tokens.dtcg.json       ${(stats.dtcg / 1024).toFixed(1)} KB  — W3C DTCG standard (Figma Variables)`);
+  console.log(`   tokens.tokens-studio.json ${(stats.studio / 1024).toFixed(1)} KB  — Tokens Studio (Figma Tokens)`);
   console.log("");
   console.log(`   Total token count: ${Object.keys(resolved).length}`);
   console.log("");

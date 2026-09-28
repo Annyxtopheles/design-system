@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination Component renders without crashing and matches snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="Pagination Navigation"
+    class="ds-Pagination ds-Pagination--md"
+  >
+    <ul
+      class="ds-Pagination__list"
+    >
+      <li
+        class="ds-Pagination__item"
+      >
+        <button
+          aria-label="Go to previous page"
+          class="ds-Pagination__button"
+          disabled=""
+        >
+          ‹
+        </button>
+      </li>
+      <li
+        class="ds-Pagination__item"
+      >
+        <button
+          aria-current="page"
+          aria-label="Page 1"
+          class="ds-Pagination__button ds-Pagination__button--active"
+        >
+          1
+        </button>
+      </li>
+      <li
+        class="ds-Pagination__item"
+      >
+        <button
+          aria-label="Go to page 2"
+          class="ds-Pagination__button "
+        >
+          2
+        </button>
+      </li>
+      <li
+        class="ds-Pagination__item"
+      >
+        <button
+          aria-label="Go to page 3"
+          class="ds-Pagination__button "
+        >
+          3
+        </button>
+      </li>
+      <li
+        class="ds-Pagination__item"
+      >
+        <button
+          aria-label="Go to page 4"
+          class="ds-Pagination__button "
+        >
+          4
+        </button>
+      </li>
+      <li
+        class="ds-Pagination__item"
+      >
+        <button
+          aria-label="Go to page 5"
+          class="ds-Pagination__button "
+        >
+          5
+        </button>
+      </li>
+      <li
+        class="ds-Pagination__item ds-Pagination__ellipsis"
+      >
+        …
+      </li>
+      <li
+        class="ds-Pagination__item"
+      >
+        <button
+          aria-label="Go to page 10"
+          class="ds-Pagination__button "
+        >
+          10
+        </button>
+      </li>
+      <li
+        class="ds-Pagination__item"
+      >
+        <button
+          aria-label="Go to next page"
+          class="ds-Pagination__button"
+        >
+          ›
+        </button>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;

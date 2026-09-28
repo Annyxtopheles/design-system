@@ -104,7 +104,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
     }
   };
 
-  const renderItem = (item: MenuItem, index: number) => {
+  const renderItem = (item: MenuItem) => {
     if (item.separator) {
       return <div key={item.id} className="ds-DropdownMenu__separator" role="separator" />;
     }
@@ -156,7 +156,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
           ref={menuRef}
           tabIndex={-1}
         >
-          {items.map((item, i) => renderItem(item, i))}
+          {items.map((item) => renderItem(item))}
         </div>
       )}
     </div>

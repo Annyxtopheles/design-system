@@ -67,6 +67,28 @@ $space-16:   var(--spacing-scale-16-rem);
 $space-20:   var(--spacing-scale-20-rem);
 $space-24:   var(--spacing-scale-24-rem);
 
+// $spacing-* aliases for ergonomic compatibility
+$spacing-0:   $space-0;
+$spacing-px:  $space-px;
+$spacing-0-5: $space-0-5;
+$spacing-1:   $space-1;
+$spacing-1-5: $space-1-5;
+$spacing-2:   $space-2;
+$spacing-2-5: $space-2-5;
+$spacing-3:   $space-3;
+$spacing-3-5: $space-3-5;
+$spacing-4:   $space-4;
+$spacing-5:   $space-5;
+$spacing-6:   $space-6;
+$spacing-7:   $space-7;
+$spacing-8:   $space-8;
+$spacing-10:  $space-10;
+$spacing-12:  $space-12;
+$spacing-14:  $space-14;
+$spacing-16:  $space-16;
+$spacing-20:  $space-20;
+$spacing-24:  $space-24;
+
 // ── Border Radii ──────────────────────────────────────────────────────────────
 $radius-none:  var(--border-radius-none);
 $radius-xs:    var(--border-radius-xs);
@@ -104,16 +126,17 @@ $ease-in-out:    var(--motion-easing-easeInOut);
 
 // ── Elevation ─────────────────────────────────────────────────────────────────
 $shadow-0:  none;
-$shadow-1:  var(--elevation-light-1-boxShadow);
-$shadow-2:  var(--elevation-light-2-boxShadow);
-$shadow-3:  var(--elevation-light-3-boxShadow);
-$shadow-4:  var(--elevation-light-4-boxShadow);
-$shadow-5:  var(--elevation-light-5-boxShadow);
-$shadow-6:  var(--elevation-light-6-boxShadow);
-$shadow-7:  var(--elevation-light-7-boxShadow);
-$shadow-8:  var(--elevation-light-8-boxShadow);
-$shadow-10: var(--elevation-light-10-boxShadow);
-$shadow-11: var(--elevation-light-11-boxShadow);
+$shadow-1:  var(--elevation-1);
+$shadow-2:  var(--elevation-2);
+$shadow-3:  var(--elevation-3);
+$shadow-4:  var(--elevation-4);
+$shadow-5:  var(--elevation-5);
+$shadow-6:  var(--elevation-6);
+$shadow-7:  var(--elevation-7);
+$shadow-8:  var(--elevation-8);
+$shadow-9:  var(--elevation-9);
+$shadow-10: var(--elevation-10);
+$shadow-11: var(--elevation-11);
 
 // ── Semantic Colors (theme-agnostic, driven by CSS vars) ──────────────────────
 // Backgrounds

@@ -20,7 +20,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   footer?: React.ReactNode;
 }
 
-export const Card: React.FC<CardProps> = ({
+const CardBase: React.FC<CardProps> = ({
   children,
   padding = 'md',
   shadow = 'md',
@@ -60,5 +60,36 @@ export const Card: React.FC<CardProps> = ({
     </div>
   );
 };
+
+export const CardHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', children, ...props }) => (
+  <div className={`ds-Card__header ${className}`.trim()} {...props}>{children}</div>
+);
+
+export const CardBody: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', children, ...props }) => (
+  <div className={`ds-Card__content ${className}`.trim()} {...props}>{children}</div>
+);
+
+export const CardFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', children, ...props }) => (
+  <div className={`ds-Card__footer ${className}`.trim()} {...props}>{children}</div>
+);
+
+export const CardMedia: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', children, ...props }) => (
+  <div className={`ds-Card__media ${className}`.trim()} {...props}>{children}</div>
+);
+
+export interface CardComponent extends React.FC<CardProps> {
+  Header: typeof CardHeader;
+  Body: typeof CardBody;
+  Content: typeof CardBody;
+  Footer: typeof CardFooter;
+  Media: typeof CardMedia;
+}
+
+export const Card = CardBase as CardComponent;
+Card.Header = CardHeader;
+Card.Body = CardBody;
+Card.Content = CardBody;
+Card.Footer = CardFooter;
+Card.Media = CardMedia;
 
 export default Card;

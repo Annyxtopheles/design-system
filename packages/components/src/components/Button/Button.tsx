@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, ReactNode, forwardRef } from 'react';
+import { type ButtonHTMLAttributes, type ReactNode, forwardRef } from 'react';
 import './Button.scss';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

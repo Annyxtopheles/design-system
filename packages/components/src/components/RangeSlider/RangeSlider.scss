@@ -1,32 +1,52 @@
 @use '../../styles/tokens' as t;
 
 .ds-RangeSlider {
-  padding: 2rem 0;
-  position: relative;
   width: 100%;
-  
+  padding: t.$spacing-4 0;
+  font-family: inherit;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: t.$spacing-6;
+  }
+
+  &__label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-primary, #0f172a);
+  }
+
+  &__range-display {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-interactive-primary, #3b82f6);
+  }
+
   &__track-container {
     position: relative;
-    height: 6px;
+    height: 8px;
+    margin: t.$spacing-2 0;
   }
-  
+
   &__track {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #e0e0e0;
-    border-radius: 3px;
+    background: var(--color-background-muted, #e2e8f0);
+    border-radius: t.$radius-full;
     z-index: 1;
   }
-  
+
   &__fill {
     position: absolute;
     height: 100%;
-    background: var(--color-interactive-primary, blue);
-    border-radius: 3px;
+    background: var(--color-interactive-primary, #3b82f6);
+    border-radius: t.$radius-full;
     z-index: 2;
   }
-  
+
   &__thumb {
     position: absolute;
     top: 50%;
@@ -34,32 +54,78 @@
     width: 100%;
     height: 0;
     -webkit-appearance: none;
+    appearance: none;
     pointer-events: none;
     z-index: 3;
     background: transparent;
-    
+    margin: 0;
+
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       pointer-events: auto;
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: white;
-      border: 2px solid var(--color-interactive-primary, blue);
+      background: var(--color-background-base, #ffffff);
+      border: 2px solid var(--color-interactive-primary, #3b82f6);
+      box-shadow: t.$shadow-2;
       cursor: pointer;
       position: relative;
       z-index: 4;
+      transition: transform t.$duration-fast t.$ease-out, box-shadow t.$duration-fast t.$ease-out;
+
+      &:hover {
+        transform: scale(1.15);
+        box-shadow: t.$shadow-3;
+      }
+    }
+
+    &:focus-visible::-webkit-slider-thumb {
+      outline: 2px solid var(--color-border-focus, #3b82f6);
+      outline-offset: 3px;
     }
   }
 
   &__tooltip {
     position: absolute;
-    top: -30px;
+    top: -32px;
     transform: translateX(-50%);
-    background: #333;
-    color: #fff;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 12px;
+    background: var(--color-surface-tooltip, #1e293b);
+    color: var(--color-text-inverse, #ffffff);
+    padding: 2px 8px;
+    border-radius: t.$radius-sm;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 5;
+    box-shadow: t.$shadow-2;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid var(--color-surface-tooltip, #1e293b);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: t.$spacing-4;
+  }
+
+  &__bound {
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary, #94a3b8);
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
   }
 }

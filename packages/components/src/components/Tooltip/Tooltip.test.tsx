@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { Tooltip } from './Tooltip';
 
 describe('Tooltip Component', () => {
@@ -44,7 +44,9 @@ describe('Tooltip Component', () => {
     );
 
     fireEvent.mouseEnter(screen.getByText('Trigger'));
-    act(() => { jest.advanceTimersByTime(10); });
+    act(() => {
+      jest.advanceTimersByTime(10);
+    });
     
     expect(screen.getByRole('tooltip')).toBeInTheDocument();
 
@@ -54,7 +56,3 @@ describe('Tooltip Component', () => {
     jest.useRealTimers();
   });
 });
-
-function act(callback: () => void) {
-  import('@testing-library/react').then(m => m.act(callback));
-}

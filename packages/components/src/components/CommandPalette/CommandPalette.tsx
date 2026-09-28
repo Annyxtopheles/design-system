@@ -129,7 +129,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           {flattenedResults.length === 0 ? (
             <div className="ds-CommandPalette__empty">{emptyMessage}</div>
           ) : (
-            Object.entries(groupedItems).map(([group, groupItems], groupIndex) => (
+            Object.entries(groupedItems).map(([group, groupItems]) => (
               <div key={group} className="ds-CommandPalette__group" role="group" aria-label={group}>
                 <div className="ds-CommandPalette__group-heading">{group}</div>
                 {groupItems.map(item => {

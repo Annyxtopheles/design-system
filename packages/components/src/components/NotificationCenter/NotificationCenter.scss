@@ -1,1 +1,196 @@
-.ds-NotificationCenter { padding: 1rem; }
+@use '../../styles/tokens' as t;
+
+.ds-NotificationCenter {
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+
+  &__bell {
+    position: relative;
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--color-border-default, #cbd5e1);
+    color: var(--color-text-primary, #0f172a);
+    width: 40px;
+    height: 40px;
+    border-radius: t.$radius-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all t.$duration-fast t.$ease-out;
+
+    &:hover {
+      background: var(--color-interactive-secondaryHover, #f1f5f9);
+      border-color: var(--color-border-strong, #94a3b8);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-border-focus, #3b82f6);
+      outline-offset: 2px;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--color-feedback-error, #ef4444);
+    color: #ffffff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    padding: 0 4px;
+    border-radius: t.$radius-full;
+    box-shadow: 0 0 0 2px var(--color-background-base, #ffffff);
+  }
+
+  &__popover {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 340px;
+    background: var(--color-surface-card, var(--color-background-base, #ffffff));
+    border: 1px solid var(--color-border-default, #e2e8f0);
+    border-radius: t.$radius-xl;
+    box-shadow: t.$shadow-8;
+    z-index: 1000;
+    overflow: hidden;
+    animation: ds-notif-pop-in t.$duration-normal t.$ease-spring;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: t.$spacing-3 t.$spacing-4;
+    border-bottom: 1px solid var(--color-border-subtle, #f1f5f9);
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-primary, #0f172a);
+  }
+
+  &__action-btn {
+    appearance: none;
+    background: transparent;
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-interactive-primary, #3b82f6);
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: t.$radius-sm;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__list {
+    max-height: 380px;
+    overflow-y: auto;
+  }
+
+  &__empty {
+    padding: t.$spacing-6;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-text-tertiary, #64748b);
+  }
+}
+
+.ds-NotificationItem {
+  display: flex;
+  align-items: flex-start;
+  gap: t.$spacing-3;
+  padding: t.$spacing-3 t.$spacing-4;
+  border-bottom: 1px solid var(--color-border-subtle, #f8fafc);
+  transition: background t.$duration-fast t.$ease-out;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-interactive-secondaryHover, rgba(0, 0, 0, 0.03));
+  }
+
+  &--unread {
+    background: var(--color-interactive-primarySubtle, rgba(59, 130, 246, 0.05));
+    .ds-NotificationItem__title {
+      font-weight: 600;
+      color: var(--color-interactive-primary, #2563eb);
+    }
+  }
+
+  &__icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: t.$spacing-2;
+    margin-bottom: 2px;
+  }
+
+  &__title {
+    font-size: 0.8125rem;
+    color: var(--color-text-primary, #0f172a);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__time {
+    font-size: 0.6875rem;
+    color: var(--color-text-tertiary, #94a3b8);
+    flex-shrink: 0;
+  }
+
+  &__message {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary, #475569);
+    line-height: 1.4;
+  }
+
+  &__dismiss-btn {
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: var(--color-text-tertiary, #94a3b8);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 2px;
+    border-radius: t.$radius-sm;
+
+    &:hover {
+      color: var(--color-feedback-error, #ef4444);
+    }
+  }
+}
+
+@keyframes ds-notif-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

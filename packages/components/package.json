@@ -3,10 +3,23 @@
   "version": "1.0.0",
   "description": "Modular React component library built on @design-system/tokens",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "sideEffects": ["**/*.scss"],
+  "style": "dist/styles.css",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "sideEffects": ["**/*.scss", "**/*.css"],
   "scripts": {
+    "build": "tsc -p . && sass src/styles/index.scss dist/styles.css --style=compressed --load-path=src/styles",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",

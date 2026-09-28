@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './DataGrid.scss';
 
 export interface Column<T> {
@@ -19,7 +19,7 @@ export interface PaginationInfo {
   onPageChange: (page: number) => void;
 }
 
-export interface DataGridProps<T extends Record<string, unknown>> {
+export interface DataGridProps<T extends Record<string, any> = Record<string, any>> {
   columns: Column<T>[];
   data: T[];
   loading?: boolean;
@@ -34,7 +34,7 @@ export interface DataGridProps<T extends Record<string, unknown>> {
   dense?: boolean;
 }
 
-export function DataGrid<T extends Record<string, unknown>>({
+export function DataGrid<T extends Record<string, any>>({
   columns,
   data,
   loading = false,

@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardDial matches snapshot 1`] = `
+<div>
+  <div
+    aria-label="Dial gauge"
+    aria-valuemax="100"
+    aria-valuemin="0"
+    aria-valuenow="50"
+    class="ds-DashboardDial ds-DashboardDial--md"
+    role="meter"
+  >
+    <svg
+      class="ds-DashboardDial__svg"
+      viewBox="0 0 200 200"
+    >
+      <path
+        d="M 156.5685424949238 156.5685424949238 A 80 80 0 1 0 43.43145750507618 156.5685424949238"
+        fill="none"
+        stroke="var(--color-background-alt, #eee)"
+        stroke-linecap="round"
+        stroke-width="16"
+      />
+      <path
+        class="ds-DashboardDial__arc-fg"
+        d="M 100 20 A 80 80 0 0 0 43.43145750507618 156.5685424949238"
+        fill="none"
+        stroke="var(--color-primary, primary)"
+        stroke-linecap="round"
+        stroke-width="16"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="49.088311754568565"
+        x2="37.774603255583806"
+        y1="150.91168824543144"
+        y2="162.22539674441617"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="31.523930826748952"
+        x2="16.307026566026494"
+        y1="122.24922359499624"
+        y2="127.1934955049954"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="28.88643947715009"
+        x2="13.08342602762788"
+        y1="88.73671851710337"
+        y2="86.23376707645967"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="41.75077640500379"
+        x2="28.80650449500463"
+        y1="57.679461834941925"
+        y2="48.27489779826235"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="67.31268401875263"
+        x2="60.048836022919886"
+        y1="35.847530258437516"
+        y2="21.591425871423624"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="100"
+        x2="100"
+        y1="28"
+        y2="12"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="132.68731598124737"
+        x2="139.9511639770801"
+        y1="35.847530258437516"
+        y2="21.59142587142364"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="158.2492235949962"
+        x2="171.19349550499538"
+        y1="57.67946183494193"
+        y2="48.274897798262366"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="171.11356052284992"
+        x2="186.91657397237213"
+        y1="88.73671851710338"
+        y2="86.23376707645969"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="168.47606917325106"
+        x2="183.69297343397352"
+        y1="122.24922359499621"
+        y2="127.19349550499537"
+      />
+      <line
+        stroke="var(--color-border, #ccc)"
+        stroke-width="2"
+        x1="150.91168824543144"
+        x2="162.22539674441617"
+        y1="150.91168824543144"
+        y2="162.22539674441617"
+      />
+      <text
+        class="ds-DashboardDial__value"
+        fill="var(--color-text-primary, #333)"
+        text-anchor="middle"
+        x="100"
+        y="110"
+      >
+        50
+      </text>
+    </svg>
+  </div>
+</div>
+`;

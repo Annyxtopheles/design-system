@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input matches snapshot 1`] = `
+<div
+  class="ds-Input-wrapper ds-Input-wrapper--md "
+>
+  <label
+    class="ds-Input__label"
+    for=":r1:"
+  >
+    Username
+  </label>
+  <div
+    class="ds-Input__container  "
+  >
+    <input
+      aria-invalid="false"
+      class="ds-Input__field"
+      id=":r1:"
+    />
+  </div>
+</div>
+`;

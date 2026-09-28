@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataGrid matches snapshot 1`] = `
+<div>
+  <div
+    class="ds-DataGrid  "
+  >
+    <div
+      class="ds-DataGrid__table-container"
+    >
+      <table
+        class="ds-DataGrid__table "
+        role="grid"
+      >
+        <thead>
+          <tr>
+            <th
+              aria-sort="none"
+              class="ds-DataGrid__th ds-DataGrid__th--sortable"
+              role="columnheader"
+            >
+              <div
+                class="ds-DataGrid__th-content"
+              >
+                ID
+                <span
+                  class="ds-DataGrid__sort-icon"
+                >
+                  ↕
+                </span>
+              </div>
+            </th>
+            <th
+              aria-sort="none"
+              class="ds-DataGrid__th ds-DataGrid__th--sortable"
+              role="columnheader"
+            >
+              <div
+                class="ds-DataGrid__th-content"
+              >
+                Name
+                <span
+                  class="ds-DataGrid__sort-icon"
+                >
+                  ↕
+                </span>
+              </div>
+            </th>
+            <th
+              aria-sort="none"
+              class="ds-DataGrid__th ds-DataGrid__th--sortable"
+              role="columnheader"
+            >
+              <div
+                class="ds-DataGrid__th-content"
+              >
+                Age
+                <span
+                  class="ds-DataGrid__sort-icon"
+                >
+                  ↕
+                </span>
+              </div>
+            </th>
+          </tr>
+          <tr
+            class="ds-DataGrid__filter-row"
+          >
+            <th
+              class="ds-DataGrid__th"
+            />
+            <th
+              class="ds-DataGrid__th"
+            >
+              <input
+                aria-label="Filter by Name"
+                class="ds-DataGrid__filter-input"
+                placeholder="Filter Name..."
+                type="text"
+                value=""
+              />
+            </th>
+            <th
+              class="ds-DataGrid__th"
+            />
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            aria-selected="false"
+            class="ds-DataGrid__row "
+          >
+            <td
+              class="ds-DataGrid__td"
+              role="gridcell"
+            >
+              1
+            </td>
+            <td
+              class="ds-DataGrid__td"
+              role="gridcell"
+            >
+              Alice
+            </td>
+            <td
+              class="ds-DataGrid__td"
+              role="gridcell"
+            >
+              25
+            </td>
+          </tr>
+          <tr
+            aria-selected="false"
+            class="ds-DataGrid__row "
+          >
+            <td
+              class="ds-DataGrid__td"
+              role="gridcell"
+            >
+              2
+            </td>
+            <td
+              class="ds-DataGrid__td"
+              role="gridcell"
+            >
+              Bob
+            </td>
+            <td
+              class="ds-DataGrid__td"
+              role="gridcell"
+            >
+              30
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;

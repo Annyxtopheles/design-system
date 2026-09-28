@@ -33,7 +33,6 @@ export const Stepper: React.FC<StepperProps> = ({
         {steps.map((step, index) => {
           const isCompleted = index < currentStep;
           const isActive = index === currentStep;
-          const isUpcoming = index > currentStep;
           const isClickable = allowClickBack && isCompleted && onStepClick;
 
           let stateClass = 'ds-Stepper__item--upcoming';

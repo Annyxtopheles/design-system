@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode, forwardRef } from 'react';
+import { type HTMLAttributes, type ReactNode, forwardRef } from 'react';
 import './Badge.scss';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {

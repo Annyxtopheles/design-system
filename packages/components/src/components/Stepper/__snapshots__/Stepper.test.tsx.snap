@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper Component renders without crashing and matches snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="Progress stepper"
+    class="ds-Stepper ds-Stepper--horizontal ds-Stepper--numbered"
+  >
+    <ol
+      class="ds-Stepper__list"
+    >
+      <li
+        class="ds-Stepper__item ds-Stepper__item--completed"
+      >
+        <div
+          class="ds-Stepper__content "
+        >
+          <div
+            class="ds-Stepper__indicator"
+          >
+            <span
+              class="ds-Stepper__number"
+            >
+              ✓
+            </span>
+          </div>
+          <div
+            class="ds-Stepper__text"
+          >
+            <div
+              class="ds-Stepper__label"
+            >
+              Step 1
+            </div>
+            <div
+              class="ds-Stepper__description"
+            >
+              Desc 1
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          class="ds-Stepper__connector"
+        />
+      </li>
+      <li
+        aria-current="step"
+        class="ds-Stepper__item ds-Stepper__item--active"
+      >
+        <div
+          class="ds-Stepper__content "
+        >
+          <div
+            class="ds-Stepper__indicator"
+          >
+            <span
+              class="ds-Stepper__number"
+            >
+              2
+            </span>
+          </div>
+          <div
+            class="ds-Stepper__text"
+          >
+            <div
+              class="ds-Stepper__label"
+            >
+              Step 2
+              <span
+                class="ds-Stepper__optional"
+              >
+                (Optional)
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          class="ds-Stepper__connector"
+        />
+      </li>
+      <li
+        class="ds-Stepper__item ds-Stepper__item--upcoming"
+      >
+        <div
+          class="ds-Stepper__content "
+        >
+          <div
+            class="ds-Stepper__indicator"
+          >
+            <span
+              class="ds-Stepper__number"
+            >
+              3
+            </span>
+          </div>
+          <div
+            class="ds-Stepper__text"
+          >
+            <div
+              class="ds-Stepper__label"
+            >
+              Step 3
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </nav>
+</DocumentFragment>
+`;

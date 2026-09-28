@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownMenu Component renders trigger and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-DropdownMenu"
+  >
+    <div
+      aria-expanded="false"
+      aria-haspopup="menu"
+      class="ds-DropdownMenu__trigger"
+      tabindex="0"
+    >
+      <button>
+        Menu
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

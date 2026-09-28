@@ -22,13 +22,11 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   'aria-label': ariaLabel = 'Breadcrumb',
 }) => {
   let displayedItems = items;
-  let hasCollapsed = false;
 
   if (maxItems && items.length > maxItems && maxItems > 1) {
     const firstItem = items[0];
     const lastItems = items.slice(-(maxItems - 1));
     displayedItems = [firstItem, { label: '...', isEllipsis: true } as any, ...lastItems];
-    hasCollapsed = true;
   }
 
   return (

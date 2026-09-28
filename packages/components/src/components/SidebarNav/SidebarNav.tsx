@@ -108,6 +108,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
     <nav 
       className={`ds-SidebarNav ${collapsed ? 'ds-SidebarNav--collapsed' : ''}`}
       aria-label="Sidebar Navigation"
+      data-collapsible={collapsible ? 'true' : undefined}
     >
       {header && <div className="ds-SidebarNav__header">{header}</div>}
       

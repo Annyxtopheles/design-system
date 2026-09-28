@@ -17,7 +17,7 @@ const FOCUSABLE_SELECTORS = [
   '[tabindex]:not([tabindex="-1"])', 'details > summary'
 ].join(', ');
 
-export const Modal: React.FC<ModalProps> = ({
+const ModalBase: React.FC<ModalProps> = ({
   open,
   onClose,
   title,
@@ -116,5 +116,28 @@ export const Modal: React.FC<ModalProps> = ({
     </div>
   );
 };
+
+export const ModalHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', children, ...props }) => (
+  <div className={`ds-Modal__header ${className}`.trim()} {...props}>{children}</div>
+);
+
+export const ModalBody: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', children, ...props }) => (
+  <div className={`ds-Modal__body ${className}`.trim()} {...props}>{children}</div>
+);
+
+export const ModalFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className = '', children, ...props }) => (
+  <div className={`ds-Modal__footer ${className}`.trim()} {...props}>{children}</div>
+);
+
+export interface ModalComponent extends React.FC<ModalProps> {
+  Header: typeof ModalHeader;
+  Body: typeof ModalBody;
+  Footer: typeof ModalFooter;
+}
+
+export const Modal = ModalBase as ModalComponent;
+Modal.Header = ModalHeader;
+Modal.Body = ModalBody;
+Modal.Footer = ModalFooter;
 
 export default Modal;

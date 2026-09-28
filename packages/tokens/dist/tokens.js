@@ -2657,6 +2657,4 @@ function getToken(path) {
 
 function cssVar(path) {
   return `var(--${path.replace(/\./g, '-')})`;
-}
-
 module.exports = { tokens, getToken, cssVar };

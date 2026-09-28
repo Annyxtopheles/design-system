@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch matches snapshot 1`] = `
+<label
+  class="ds-Switch-wrapper ds-Switch-wrapper--lg  "
+  for=":r1:"
+>
+  <span
+    class="ds-Switch__label-text"
+    id=":r1:-label"
+  >
+    Dark Mode
+  </span>
+  <div
+    class="ds-Switch__input-container"
+  >
+    <input
+      aria-labelledby=":r1:-label"
+      class="ds-Switch__input"
+      id=":r1:"
+      role="switch"
+      type="checkbox"
+    />
+    <div
+      aria-hidden="true"
+      class="ds-Switch__track"
+    >
+      <div
+        class="ds-Switch__thumb"
+      />
+    </div>
+  </div>
+</label>
+`;

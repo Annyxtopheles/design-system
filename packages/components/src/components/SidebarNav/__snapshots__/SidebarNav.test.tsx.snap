@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarNav Component renders without crashing and matches snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="Sidebar Navigation"
+    class="ds-SidebarNav "
+  >
+    <div
+      class="ds-SidebarNav__content"
+    >
+      <ul
+        class="ds-SidebarNav__list"
+      >
+        <li
+          class="ds-SidebarNav__item  "
+        >
+          <a
+            class="ds-SidebarNav__link"
+            href="/"
+            style="padding-left: 1rem;"
+          >
+            <span
+              class="ds-SidebarNav__label"
+            >
+              Home
+            </span>
+          </a>
+        </li>
+        <li
+          class="ds-SidebarNav__item  ds-SidebarNav__item--disabled"
+        >
+          <button
+            class="ds-SidebarNav__link ds-SidebarNav__button"
+            style="padding-left: 1rem;"
+          >
+            <span
+              class="ds-SidebarNav__label"
+            >
+              Settings
+            </span>
+          </button>
+        </li>
+        <li
+          class="ds-SidebarNav__item  "
+        >
+          <button
+            aria-expanded="false"
+            class="ds-SidebarNav__link ds-SidebarNav__button"
+            style="padding-left: 1rem;"
+          >
+            <span
+              class="ds-SidebarNav__label"
+            >
+              Projects
+            </span>
+            <span
+              class="ds-SidebarNav__chevron "
+            >
+              ▼
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</DocumentFragment>
+`;

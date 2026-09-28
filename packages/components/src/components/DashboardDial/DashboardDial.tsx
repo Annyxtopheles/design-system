@@ -48,7 +48,7 @@ export const DashboardDial: React.FC<DashboardDialProps> = ({
   thresholds,
   segments
 }) => {
-  const [animatedValue, setAnimatedValue] = useState(min);
+  const [animatedValue, setAnimatedValue] = useState(value);
 
   useEffect(() => {
     let startTimestamp: number;

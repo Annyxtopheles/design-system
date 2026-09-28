@@ -34,4 +34,17 @@ describe('Card Component', () => {
     fireEvent.click(card);
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  it('supports compound subcomponents Card.Header, Card.Body, and Card.Footer', () => {
+    render(
+      <Card>
+        <Card.Header data-testid="compound-header">Compound Title</Card.Header>
+        <Card.Body data-testid="compound-body">Compound Description</Card.Body>
+        <Card.Footer data-testid="compound-footer">Compound Action</Card.Footer>
+      </Card>
+    );
+    expect(screen.getByTestId('compound-header')).toHaveTextContent('Compound Title');
+    expect(screen.getByTestId('compound-body')).toHaveTextContent('Compound Description');
+    expect(screen.getByTestId('compound-footer')).toHaveTextContent('Compound Action');
+  });
 });

@@ -7,7 +7,7 @@
   "scripts": {
     "build": "ts-node src/generate.ts",
     "build:watch": "nodemon --exec ts-node src/generate.ts --watch src/tokens",
-    "validate": "node -e \"const t = require('./dist/tokens.json'); const flat = JSON.stringify(t); const unresolved = (flat.match(/\\{[^}]+\\}/g) || []); if(unresolved.length) { console.error('Unresolved aliases:', unresolved); process.exit(1); } else { console.log('All aliases resolved. Token count:', Object.keys(t).length); }\""
+    "validate": "node -e \"const flat = require('./dist/tokens.flat.json'); const unresolved = Object.entries(flat).filter(([k, v]) => typeof v === 'string' && /\\{[a-zA-Z0-9_.-]+\\}/.test(v)); if(unresolved.length) { console.error('Unresolved aliases:', unresolved); process.exit(1); } else { console.log('All aliases resolved. Token count:', Object.keys(flat).length); }\""
   },
   "devDependencies": {
     "typescript": "^5.4.0",

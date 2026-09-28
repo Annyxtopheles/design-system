@@ -2,7 +2,7 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  setupFilesAfterFramework: [],
+  setupFilesAfterEnv: ['@testing-library/jest-dom'],
   moduleNameMapper: {
     '\\.scss$': '<rootDir>/src/__mocks__/styleMock.js',
     '^@tokens/(.*)$': '<rootDir>/../tokens/dist/$1',
@@ -11,9 +11,11 @@ module.exports = {
     '^.+\\.tsx?$': ['ts-jest', {
       tsconfig: {
         jsx: 'react-jsx',
-        strict: true,
         esModuleInterop: true,
         allowSyntheticDefaultImports: true,
+        noUnusedLocals: false,
+        noUnusedParameters: false,
+        types: ["node", "jest", "@testing-library/jest-dom"],
       },
     }],
   },

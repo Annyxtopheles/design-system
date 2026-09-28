@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio and RadioGroup matches RadioGroup snapshot 1`] = `
+<div
+  aria-invalid="false"
+  aria-labelledby=":r1:-label"
+  class="ds-RadioGroup ds-RadioGroup--vertical "
+  role="radiogroup"
+>
+  <div
+    class="ds-RadioGroup__label"
+    id=":r1:-label"
+  >
+    Test Group
+  </div>
+  <div
+    class="ds-RadioGroup__options"
+  >
+    <label
+      class="ds-Radio-wrapper  "
+      for=":r2:"
+    >
+      <div
+        class="ds-Radio__input-container"
+      >
+        <input
+          class="ds-Radio__input"
+          id=":r2:"
+          name="test"
+          type="radio"
+          value="1"
+        />
+        <div
+          aria-hidden="true"
+          class="ds-Radio__custom"
+        >
+          <div
+            class="ds-Radio__dot"
+          />
+        </div>
+      </div>
+      <span
+        class="ds-Radio__label-text"
+      >
+        One
+      </span>
+    </label>
+  </div>
+</div>
+`;

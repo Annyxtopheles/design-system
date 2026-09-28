@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs Component renders without crashing and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ds-Tabs ds-Tabs--line ds-Tabs--horizontal ds-Tabs--md"
+    data-testid="ds-tabs"
+  >
+    <div
+      aria-label="Tabs"
+      aria-orientation="horizontal"
+      class="ds-Tabs__list"
+      role="tablist"
+    >
+      <button
+        aria-controls="panel-tab1"
+        aria-selected="true"
+        class="ds-Tabs__tab ds-Tabs__tab--active"
+        id="tab-tab1"
+        role="tab"
+        tabindex="0"
+      >
+        Tab 1
+      </button>
+      <button
+        aria-controls="panel-tab2"
+        aria-selected="false"
+        class="ds-Tabs__tab "
+        id="tab-tab2"
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 2
+      </button>
+      <button
+        aria-controls="panel-tab3"
+        aria-selected="false"
+        class="ds-Tabs__tab "
+        disabled=""
+        id="tab-tab3"
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 3
+      </button>
+    </div>
+    <div
+      aria-labelledby="tab-tab1"
+      class="ds-Tabs__panel"
+      id="panel-tab1"
+      role="tabpanel"
+      tabindex="0"
+    >
+      Content 1
+    </div>
+  </div>
+</DocumentFragment>
+`;

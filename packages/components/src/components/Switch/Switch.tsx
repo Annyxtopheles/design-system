@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, forwardRef, useId, KeyboardEvent } from 'react';
+import { type InputHTMLAttributes, forwardRef, useId, type KeyboardEvent } from 'react';
 import './Switch.scss';
 
 export interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
@@ -25,9 +25,8 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     const switchId = id || generatedId;
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Enter') {
+      if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
-        // Fire click to toggle
         e.currentTarget.click();
       }
     };

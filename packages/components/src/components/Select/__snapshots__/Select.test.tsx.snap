@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select matches snapshot 1`] = `
+<div
+  class="ds-Select-wrapper "
+>
+  <label
+    class="ds-Select__label"
+    for=":r1:"
+  >
+    Options
+  </label>
+  <div
+    class="ds-Select__container  "
+  >
+    <select
+      aria-invalid="false"
+      class="ds-Select__field"
+      id=":r1:"
+    >
+      <option
+        value="1"
+      >
+        Option 1
+      </option>
+      <option
+        value="2"
+      >
+        Option 2
+      </option>
+    </select>
+    <span
+      aria-hidden="true"
+      class="ds-Select__icon"
+    >
+      <svg
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <polyline
+          points="6 9 12 15 18 9"
+        />
+      </svg>
+    </span>
+  </div>
+</div>
+`;

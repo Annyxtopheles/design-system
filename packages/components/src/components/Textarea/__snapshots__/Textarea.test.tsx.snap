@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea matches snapshot 1`] = `
+<div
+  class="ds-Textarea-wrapper "
+>
+  <label
+    class="ds-Textarea__label"
+    for=":r1:"
+  >
+    Notes
+  </label>
+  <div
+    class="ds-Textarea__container  "
+  >
+    <textarea
+      aria-invalid="false"
+      class="ds-Textarea__field ds-Textarea__field--resize-vertical"
+      id=":r1:"
+    />
+  </div>
+  <div
+    class="ds-Textarea__footer"
+  >
+    <div
+      class="ds-Textarea__messages"
+    />
+  </div>
+</div>
+`;
